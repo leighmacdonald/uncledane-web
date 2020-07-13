@@ -1,0 +1,29 @@
+{
+  "name": "uncledane-web",
+  "version": "1.0.0",
+  "description": "Frontend for uncledane.com",
+  "main": "src/index.ts",
+  "repository": "github.com/leighmacdonald/verimapcom",
+  "author": "Leigh MacDonald",
+  "license": "MIT",
+  "private": true,
+  "scripts": {
+    "compress": "./compress.sh",
+    "watch": "cross-env NODE_ENV=development parcel --public-url /dist src/index.ts",
+    "build": "./compress.sh && cross-env NODE_ENV=production parcel --public-url /dist build src/index.ts"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.0.1",
+    "@babel/preset-env": "^7.0.0",
+    "cross-env": "^7.0.2",
+    "parcel-bundler": "^1.12.4",
+    "sass": "^1.26.9",
+    "typescript": "^3.9.5"
+  },
+  "dependencies": {
+    "foundation-sites": "^6.6.3",
+    "jquery": "^3.3.1",
+    "motion-ui": "^2.0.3",
+    "what-input": "^5.2.1"
+  }
+}

@@ -1,0 +1,2 @@
+listen_http: ":8005"
+static_path: "public/dist"
