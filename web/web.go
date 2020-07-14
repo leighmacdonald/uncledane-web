@@ -2,6 +2,7 @@ package web
 
 import (
 	"bytes"
+	"context"
 	"crypto/tls"
 	"fmt"
 	"github.com/gin-gonic/gin"
@@ -23,11 +24,14 @@ type App struct {
 	router    *gin.Engine
 	templates map[string]*template.Template
 	srv       *http.Server
+	ctx       context.Context
 }
 
 func New() *App {
-	var a App
-	a.templates = make(map[string]*template.Template)
+	a := App{
+		ctx:       context.Background(),
+		templates: make(map[string]*template.Template),
+	}
 	var templateFiles []string
 	root := "templates"
 	if err := filepath.Walk(root, func(path string, info os.FileInfo, err error) error {
@@ -113,6 +117,9 @@ func newTmpl(files ...string) *template.Template {
 func (a *App) Serve(opts HTTPOpts) error {
 	opts.Handler = a.router
 	a.srv = NewHTTPServer(opts)
+
+	go updateWorker(a.ctx, config.Servers)
+
 	return a.srv.ListenAndServe()
 }
 

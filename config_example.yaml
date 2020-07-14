@@ -1,2 +1,23 @@
-listen_http: ":8005"
-static_path: "public/dist"
+listen_http: ":8003"
+static_path: "frontend/dist"
+servers:
+  us-1:
+    host: dane-us1.jttm.us
+    port: 27015
+    pass: xx
+  us-2:
+    host: dane-us2.jttm.us
+    port: 27015
+    pass: xx
+  us-3:
+    host: dane-us3.jttm.us
+    port: 27015
+    pass: xx
+  eu-1:
+    host: dane-eu1.jttm.us
+    port: 27015
+    pass: xx
+  eu-2:
+    host: dane-eu2.jttm.us
+    port: 27015
+    pass: xx
