@@ -24,6 +24,7 @@ import 'what-input'
 globalThis.jQuery = $
 
 function main() {
+    $(document).foundation();
     const path = window.location.pathname.toLowerCase();
     switch (path) {
         case "/servers":
@@ -35,5 +36,12 @@ function main() {
 document.addEventListener("DOMContentLoaded", main);
 
 function init_servers() {
-    console.log("yep, servers.")
+    document.querySelector(".server_info").addEventListener("click", evt => {
+        console.log(evt)
+        console.log("x")
+        //evt.preventDefault()
+        let target = (<HTMLDivElement>(evt.currentTarget)).dataset.toggletarget
+        let s = document.getElementById(target)
+        s.classList.toggle("hide")
+    })
 }

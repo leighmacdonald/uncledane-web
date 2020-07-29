@@ -1,5 +1,207 @@
 {{define "content"}}
-    Servers~
+    <div class="grid-container">
+        <div class="grid-y grid-padding-y">
+            <div class="cell">
+                <h1 class="text-center" style="margin-top: 0.5em">Uncletopia</h1>
+            </div>
+            <div class="cell" id="servers">
+                <div class="grid-y grid-padding-y">
+                    {{ range .servers }}
+                        <div class="cell server_info" data-toggletarget="status_{{ .Host }}{{ .Port }}">
+                            <div class="grid-x grid-padding-x">
+                                <div class="cell medium-6">
+                                    <p>{{ .State.ServerName }}</p>
+                                </div>
+                                <div class="cell medium-2">
+                                    <p>{{ .State.Map }}</p>
+                                </div>
+                                <div class="cell medium-1">
+                                    <p>{{ .State.PlayersCount }} / 24</p>
+                                </div>
+                                <div class="cell medium-3">
+                                    <a class="connect_link" href="steam://connect/{{ .Host }}:{{ .Port }}">Connect</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="cell player_info hide" id="status_{{ .Host }}{{ .Port }}">
+                            <div class="grid-x grid-padding-x">
+                                <div class="cell medium-3">
+                                    <p>Player</p>
+                                </div>
+                                <div class="cell medium-3">
+                                    <p>Connected</p>
+                                </div>
+                                <div class="cell medium-2">
+                                    <p>Ping</p>
+                                </div>
+                                <div class="cell medium-2">
+                                    <p>Loss</p>
+                                </div>
+                                <div class="cell medium-2">
+                                    <p>State</p>
+                                </div>
+                            </div>
+                            {{ range .State.Players }}
+                                <div class="grid-x grid-padding-x">
+                                    <div class="cell medium-3">
+                                        <a class="map_link"
+                                           href="https://steamcommunity.com/profiles/{{ .SID }}">{{ .Name }}</a>
+                                    </div>
+                                    <div class="cell medium-3">
+                                        <p>{{ .ConnectedTime }}</p>
+                                    </div>
+                                    <div class="cell medium-2">
+                                        <p>{{ .Ping }}</p>
+                                    </div>
+                                    <div class="cell medium-2">
+                                        <p>{{ .Loss }}</p>
+                                    </div>
+                                    <div class="cell medium-2">
+                                        <p>{{ .State }}</p>
+                                    </div>
+                                </div>
+                            {{ end }}
+                        </div>
+                    {{ end }}
+                </div>
+            </div>
+            <div class="grid-x grid-padding-x map_list">
+                <div class="cell" style="margin-top: 1em; margin-bottom: 1em">
+                    <h2 class="text-center">Map List</h2>
+                </div>
+                <div class="cell medium-3">
+                    <h4 class="text-center">Payload</h4>
+                    <ul class="map_list">
+                        <li class="text-center"><a class="map_link" href="https://wiki.teamfortress.com/wiki/Barnblitz">pl_barnblitz</a>
+                        </li>
+                        <li class="text-center"><a class="map_link"
+                                                   href="https://wiki.teamfortress.com/wiki/Badwater_Basin">pl_badwater_pro</a>
+                        </li>
+                        <li class="text-center"><a class="map_link" href="https://wiki.teamfortress.com/wiki/Borneo">pl_borneo</a>
+                        </li>
+                        <li class="text-center"><a class="map_link" href="https://wiki.teamfortress.com/wiki/Gold_Rush">pl_goldrush</a>
+                        </li>
+                        <li class="text-center"><a class="map_link"
+                                                   href="https://wiki.teamfortress.com/wiki/Snowycoast">pl_snowycoast</a>
+                        </li>
+                        <li class="text-center"><a class="map_link"
+                                                   href="https://wiki.teamfortress.com/wiki/Swiftwater">pl_swiftwater_final1</a>
+                        </li>
+                        <li class="text-center"><a class="map_link" href="https://wiki.teamfortress.com/wiki/Upward">pl_upward</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="cell medium-3">
+                    <h4 class="text-center">Control Point</h4>
+                    <ul class="map_list">
+                        <li class="text-center"><a class="map_link" href="https://wiki.teamfortress.com/wiki/Coldfront">cp_coldfront</a>
+                        </li>
+                        <li class="text-center"><a class="map_link"
+                                                   href="https://wiki.teamfortress.com/wiki/Powerhouse">cp_powerhouse</a>
+                        </li>
+                        <li class="text-center"><a class="map_link" href="https://wiki.teamfortress.com/wiki/Foundry">cp_foundry</a>
+                        </li>
+                        <li class="text-center"><a class="map_link" href="https://wiki.teamfortress.com/wiki/Gullywash">cp_gullywash_final1</a>
+                        </li>
+                        <li class="text-center"><a class="map_link"
+                                                   href="https://wiki.teamfortress.com/wiki/Metalworks">cp_metalworks</a>
+                        </li>
+                        <li class="text-center"><a class="map_link" href="https://wiki.teamfortress.com/wiki/Process">cp_process_final</a>
+                        </li>
+                        <li class="text-center"><a class="map_link" href="https://wiki.teamfortress.com/wiki/Sunshine">cp_sunshine</a>
+                        </li>
+                        <li class="text-center"><a class="map_link"
+                                                   href="https://wiki.teamfortress.com/wiki/Snakewater">cp_snakewater_final1</a>
+                        </li>
+                        <li class="text-center"><a class="map_link" href="https://wiki.teamfortress.com/wiki/Vanguard">cp_vanguard</a>
+                        </li>
+                        <li class="text-center"><a class="map_link" href="https://wiki.teamfortress.com/wiki/Dustbowl">cp_dustbowl</a>
+                        </li>
+                        <li class="text-center"><a class="map_link" href="https://wiki.teamfortress.com/wiki/Gorge">cp_gorge</a>
+                        </li>
+                        <li class="text-center"><a class="map_link"
+                                                   href="https://wiki.teamfortress.com/wiki/Mountain_Lab">cp_mountainlab</a>
+                        </li>
+                        <li class="text-center"><a class="map_link" href="https://wiki.teamfortress.com/wiki/Steel">cp_steel</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="cell medium-3">
+                    <h4 class="text-center">KOTH</h4>
+                    <ul class="map_list">
+                        <li class="text-center"><a class="map_link" href="https://wiki.teamfortress.com/wiki/Viaduct">koth_product</a>
+                        </li>
+                        <li class="text-center"><a class="map_link" href="https://wiki.teamfortress.com/wiki/Highpass">koth_highpass</a>
+                        </li>
+                        <li class="text-center"><a class="map_link" href="https://wiki.teamfortress.com/wiki/Harvest">koth_harvest</a>
+                        </li>
+                        <li class="text-center"><a class="map_link" href="https://wiki.teamfortress.com/wiki/Kong_King">koth_king</a>
+                        </li>
+                        <li class="text-center"><a class="map_link" href="https://wiki.teamfortress.com/wiki/Lazarus">koth_lazarus</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="cell medium-3">
+                    <h4 class="text-center">CTF</h4>
+                    <ul class="map_list">
+                        <li class="text-center"><a class="map_link" href="https://wiki.teamfortress.com/wiki/Landfall">ctf_landfall</a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="cell">
+                    <h2 class="text-center"  style="margin-top: 1em; margin-bottom: 1em">Server Details</h2>
+                    <h6>No random crits</h6>
+                    <p>No weapon can randomly crit on Uncletopia. This makes for more fair player interaction and
+                        encourages skill.</p>
+
+                    <h6>No random bullet spread</h6>
+                    <p>Shotguns and Scatter Guns have fixed spread patterns. This makes the damage output of these
+                        weapons consistent.</p>
+
+                    <h6>Class limits (3)</h6>
+                    <p>Each team can only have three of one class at a time. This makes team composition more
+                        balanced.</p>
+
+                    <h6>High Ping Limit</h6>
+                    <p>If you have more than 180 ping for more than 1 minute, you will be automatically kicked
+                        from the server. This makes it so players will not have to play against extremely
+                        laggy opponents. If there are less than 12 players on the server, this rule does not
+                        apply to help with seeding.</p>
+
+                    <h6>Sprays disabled</h6>
+                    <p>Sprays are not able to be seen on Uncletopia. This is to prevent inappropriate images from being
+                        displayed.</p>
+
+                    <h6>Teammate player collision disabled</h6>
+                    <p>When you bump into another teammate on Uncletopia, neither of your respective player models
+                        will be moved. This is to prevent griefing.</p>
+
+                    <h6>Round start explosive jumping enabled</h6>
+                    <p>In Valve servers, you are unable to explosive jump at the beginning of the round. In Uncletopia,
+                        you are able to do so. This is to encourage skillful rollouts.</p>
+
+                    <h6>Voting to change map enabled</h6>
+                    <p>RTV (rock the vote) is a sourcemod plugin that allows players to initiate server-wide vote to
+                        change the map. Type either “!rtv” or “rtv” to vote.</p>
+
+                    <h6>Voting to scramble teams enabled (thanks HiGPS!)</h6>
+                    <p>You can type <kbd>!vscramble</kbd> to vote to scramble the teams after the round ends. At least
+                        8 players need to vote in order to scramble teams.</p>
+
+                    <h6>sv_pure 1 enabled</h6>
+                    <p>You are able to use custom first-person viewmodel animations on Uncletopia.</p>
+
+                    <h6>No bots (except that scout running at you)</h6>
+                    <p>Uncletopia will never seed the server with player bots. Cheater bots only really join Casual
+                        Mode, so it is extremely unlikely you will encounter them in community servers. If you wish to
+                        report a player for suspicious activity, please ping an Uncletopia mod on Discord.</p>
+
+
+                </div>
+            </div>
+        </div>
+    </div>
 {{end}}
 
 {{define "title"}}Uncletopia Servers{{end}}

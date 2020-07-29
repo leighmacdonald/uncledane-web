@@ -128,7 +128,12 @@ func (a *App) handleIndex(c *gin.Context) {
 }
 
 func (a *App) handleServers(c *gin.Context) {
-	a.render(c, "servers", M{})
+	serverMu.RLock()
+	servers := server
+	serverMu.RUnlock()
+	a.render(c, "servers", M{
+		"servers": servers,
+	})
 }
 
 func (a *App) handleDonate(c *gin.Context) {

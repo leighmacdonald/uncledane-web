@@ -2,6 +2,7 @@ package web
 
 import (
 	"fmt"
+	"github.com/leighmacdonald/steamid"
 	"github.com/mitchellh/go-homedir"
 	"github.com/spf13/viper"
 	"log"
@@ -18,9 +19,10 @@ type Config struct {
 }
 
 type Server struct {
-	Host string
-	Port uint16
-	Pass string
+	Host  string
+	Port  uint16
+	Pass  string
+	State steamid.Status
 }
 
 // initConfig reads in config file and ENV variables if set.

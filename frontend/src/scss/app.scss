@@ -1,11 +1,82 @@
+@import "fonts";
 @import 'foundationSettings';
 @import '~foundation-sites/scss/util/util';
 @import '~foundation-sites/scss/util/mixins';
 @import '~foundation-sites/scss/components/dropdown-menu';
 @import '~foundation-sites/scss/components/dropdown';
 @import '~foundation-sites/scss/components/menu';
+@import '~foundation-sites/scss/components/button';
+@import '~foundation-sites/scss/components/table';
 @import '~foundation-sites/scss/xy-grid/xy-grid';
 @import '~foundation-sites/scss/components/callout';
 @import "~motion-ui/motion-ui";
 @import "icons";
 
+#header {
+  .image {
+    background-image: url("../public/images/header_1280_300.png");
+    height: 300px;
+  }
+  font-size: 125%;
+  a , li {color: #6a4534;}
+  font-family: 'TF2 Build', "Helvetica Neue", Helvetica, Roboto, Arial, sans-serif;
+}
+
+#feet {
+  background-image: url('../public/images/thinking_about_feet.png');
+  background-position: right bottom;
+  background-repeat: no-repeat;
+  height: 200px;
+  margin-top: 1em;
+}
+
+#servers {
+  font-size: 125%;
+  .connect_link {
+    @include button(true, $orange-light, darken($orange-light, 5%), $orange-dark);
+    font-weight: 900;
+    color: $orange-light;
+    margin-bottom: 0;
+    cursor: crosshair;
+  }
+  tbody > tr:hover {
+    background-color: darken($orange-dark, 5%);
+    cursor: pointer;
+  }
+}
+.server_info {
+  background-color: darken($body-background, 5%);
+  margin-bottom: 10px;
+  &:hover {
+    background-color: darken($body-background, 10%);
+    cursor: pointer;
+  }
+}
+
+.map_link {
+  font-weight: 700;
+  color: $orange-light;
+  &:hover {
+    color: lighten($orange-light, 10%);
+  }
+}
+
+.map_list {
+  list-style-image: none;
+  margin: 0;
+}
+
+.center_img {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 50%;
+}
+
+.home_left {
+  background-image: url('../public/images/commish_500.png');
+  background-position: left bottom;
+  background-repeat: no-repeat;
+  height: 806px;
+
+}

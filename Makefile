@@ -1,3 +1,5 @@
+.PHONY: frontend
+
 all: build
 
 vet:
@@ -10,7 +12,7 @@ yarn_install:
 	@cd frontend && yarn install && cd ..
 
 frontend:
-	@cd frontend && yarn run build && cd ..
+	@cd frontend && yarn run build && cp -rv src/public/* dist/ && cd ..
 
 watch:
 	@cd frontend && yarn run watch && cd ..

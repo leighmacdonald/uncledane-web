@@ -1,29 +1,99 @@
 {{define "layout"}}
-<!doctype html>
-<html class="no-js" lang="en">
-<head>
-    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-172445697-1"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag() {
-            dataLayer.push(arguments);
-        }
-        gtag('js', new Date());
-        gtag('config', 'UA-172445697-1');
-    </script>
-    <meta charset="utf-8"/>
-    <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>Uncle Dane - {{ template "title" }}</title>
-    <link rel="icon" type="image/png" href="/dist/images/uncleHead.png"/>
-    <link rel="stylesheet" href="/dist/index.css"/>
-</head>
-<body>
+    <!doctype html>
+    <html class="no-js" lang="en">
+    <head>
+        <script async src="https://www.googletagmanager.com/gtag/js?id=UA-172445697-1"></script>
+        <script>
+            window.dataLayer = window.dataLayer || [];
 
-{{ template "content" . }}
+            function gtag() {
+                dataLayer.push(arguments);
+            }
 
-<script src="/dist/index.js"></script>
-</body>
-</html>
+            gtag('js', new Date());
+            gtag('config', 'UA-172445697-1');
+        </script>
+        <meta charset="utf-8"/>
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <title>Uncle Dane - {{ template "title" }}</title>
+
+        <link rel="apple-touch-icon" sizes="180x180" href="/dist/images/apple-touch-icon.png">
+        <link rel="icon" type="image/png" sizes="32x32" href="/dist/images/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/dist/images/favicon-16x16.png">
+        <link rel="manifest" href="/dist/images/site.webmanifest">
+
+        <link rel="stylesheet" href="/dist/index.css"/>
+    </head>
+    <body>
+    <div class="grid-container" id="header">
+        <div class="grid-y">
+            <div class="cell image">
+
+            </div>
+            <div class="cell">
+                <div class="top-bar">
+                    <div class="top-bar-left">
+                        <ul class="menu">
+                            <li class="menu-text"><a style="padding: 0" href="/">Uncle Dane</a></li>
+                        </ul>
+                    </div>
+                    <div class="top-bar-right">
+                        <ul class="dropdown menu" data-dropdown-menu>
+                            <li>
+                                <a href="https://www.youtube.com/uncledane">Youtube</a>
+                                <ul class="menu vertical">
+                                    <li><a href="https://www.youtube.com/uncledane">Uncle Dane</a></li>
+                                    <li><a href="https://www.youtube.com/2uncle2dane">2uncle2dane</a></li>
+                                    <li><a href="https://www.youtube.com/user/itswhateverwewant">Whatever We Want</a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li><a href="#">Community</a>
+                                <ul class="menu vertical">
+                                    <li><a href="http://www.discord.gg/uncledane">Discord</a></li>
+                                    <li><a href="https://steamcommunity.com/groups/UncleDane">Steam Group</a></li>
+                                </ul>
+                            </li>
+                            <li><a href="/servers">TF2 Servers</a></li>
+                            <li><a href="#">Social Media</a>
+                                <ul class="menu vertical">
+                                    <li><a href="https://twitter.com/danekevincook">Twitter</a></li>
+                                    <li><a href="https://www.instagram.com/danekevincook/">Instagram</a></li>
+                                </ul>
+                            </li>
+                            <li>
+                                <a href="#">Music</a>
+                                <ul class="menu vertical">
+                                    <li><a href="https://open.spotify.com/artist/6h8zXsBuNnbaHv8lIH5yrd">Spotify</a>
+                                    </li>
+                                    <li><a href="https://uncledane.bandcamp.com/">Bandcamp</a></li>
+                                    <li><a href="https://soundcloud.com/uncle-dane">Soundcloud</a></li>
+                                </ul>
+                            </li>
+                            <li><a href="/donate">Donate</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {{ template "content" . }}
+
+    <div class="grid-container" id="feet">
+        <div class="grid-x grid-padding-x">
+            <div class="cell medium-6">
+
+            </div>
+            <div class="cell medium-6 text-right">
+
+            </div>
+        </div>
+    </div>
+
+    <script src="/dist/index.js"></script>
+    </body>
+    </html>
 
 {{end}}
