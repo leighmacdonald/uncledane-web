@@ -44,11 +44,9 @@ clean:
 	@CGO_ENABLED=0 go clean $(GO_FLAGS) -i
 	@rm -rf ./frontend/dist
 
+run_image:
+	@docker run --rm -p 8003:8003 -v "$(pwd)/config.yaml:/app/config.yaml" leighmacdonald/uncledane-web:latest
+
 image:
 	@docker build -t leighmacdonald/uncledane-web:latest .
 
-runimage:
-	@docker run --rm --name uncledane-web -it \
-		-p 8003:8003 \
-		--mount type=bind,source=$(CURDIR)/config.yaml,target=/app/config.yaml \
-		leighmacdonald/uncledane-web:latest || true

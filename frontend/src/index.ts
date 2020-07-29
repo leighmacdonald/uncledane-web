@@ -35,13 +35,15 @@ function main() {
 
 document.addEventListener("DOMContentLoaded", main);
 
+function server_click_handler(evt) {
+    evt.preventDefault()
+    const target = (<HTMLDivElement>(evt.currentTarget)).dataset.toggletarget
+    document.getElementById(target).classList.toggle("hide")
+}
+
 function init_servers() {
-    document.querySelector(".server_info").addEventListener("click", evt => {
-        console.log(evt)
-        console.log("x")
-        //evt.preventDefault()
-        let target = (<HTMLDivElement>(evt.currentTarget)).dataset.toggletarget
-        let s = document.getElementById(target)
-        s.classList.toggle("hide")
-    })
+    const elements = document.getElementsByClassName("server_info");
+    for (let i = 0; i < elements.length; i++) {
+        elements[i].addEventListener("click", server_click_handler);
+    }
 }

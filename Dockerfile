@@ -21,6 +21,6 @@ LABEL maintainer="Leigh MacDonald <leigh.macdonald@gmail.com>"
 WORKDIR /app
 COPY ./templates ./templates
 COPY --from=backend /build/uncledane-web .
-COPY --from=ui /build/dist ./dist
+COPY --from=ui /build/dist ./frontend/dist
 EXPOSE 8003
 CMD ["./uncledane-web"]

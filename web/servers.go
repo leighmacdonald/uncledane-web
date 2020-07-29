@@ -53,15 +53,15 @@ func updateWorker(ctx context.Context, servers map[string]Server) {
 func query(server Server) (steamid.Status, error) {
 	rc, err := rcon.Dial(fmt.Sprintf("%s:%d", server.Host, server.Port), server.Pass)
 	if err != nil {
-		return steamid.Status{}, errors.Wrapf(err, "Could not dial remote server: %v")
+		return steamid.Status{}, errors.Wrapf(err, "Could not dial remote server: %v", err)
 	}
 	_, err = rc.Write("status")
 	if err != nil {
-		return steamid.Status{}, errors.Wrapf(err, "Could not write request: %v")
+		return steamid.Status{}, errors.Wrapf(err, "Could not write request: %v", err)
 	}
 	resp, _, err := rc.Read()
 	if err != nil {
-		return steamid.Status{}, errors.Wrapf(err, "Could not read response: %v")
+		return steamid.Status{}, errors.Wrapf(err, "Could not read response: %v", err)
 	}
 	return steamid.ParseStatus(resp, true)
 }
