@@ -117,8 +117,7 @@ func newTmpl(files ...string) *template.Template {
 func (a *App) Serve(opts HTTPOpts) error {
 	opts.Handler = a.router
 	a.srv = NewHTTPServer(opts)
-
-	go updateWorker(a.ctx, config.Servers)
+	go updateWorker(a.ctx)
 
 	return a.srv.ListenAndServe()
 }
@@ -128,9 +127,9 @@ func (a *App) handleIndex(c *gin.Context) {
 }
 
 func (a *App) handleServers(c *gin.Context) {
-	serverMu.RLock()
-	servers := server
-	serverMu.RUnlock()
+	serversMu.RLock()
+	servers := servers
+	serversMu.RUnlock()
 	a.render(c, "servers", M{
 		"servers": servers,
 	})
