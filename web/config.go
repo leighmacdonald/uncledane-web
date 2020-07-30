@@ -7,22 +7,27 @@ import (
 	"github.com/spf13/viper"
 	"log"
 	"os"
+	"time"
 )
 
 var config Config
 var cfgFile string
 
 type Config struct {
-	Listen     string            `mapstructure:"listen_http"`
-	StaticPath string            `mapstructure:"static_path"`
-	Servers    map[string]Server `mapstructure:"servers"`
+	GraphURL    string             `mapstructure:"graph_url"`
+	EmptyMaxAge time.Duration      `mapstructure:"empty_max_age"`
+	Listen      string             `mapstructure:"listen_http"`
+	StaticPath  string             `mapstructure:"static_path"`
+	Servers     map[string]*Server `mapstructure:"servers"`
 }
 
 type Server struct {
-	Host  string
-	Port  uint16
-	Pass  string
-	State steamid.Status
+	Host           string `mapstructure:"host"`
+	Port           uint16 `mapstructure:"port"`
+	Pass           string `mapstructure:"pass"`
+	DefaultMap     string `mapstructure:"default_map"`
+	LastHadPlayers time.Time
+	State          steamid.Status
 }
 
 // initConfig reads in config file and ENV variables if set.
@@ -51,10 +56,13 @@ func InitConfig() {
 		fmt.Println("Using config file:", viper.ConfigFileUsed())
 	}
 	c := Config{
-		Servers: make(map[string]Server),
+		Servers: make(map[string]*Server),
 	}
 	if err := viper.Unmarshal(&c); err != nil {
 		log.Fatalf("Failed to unmarshal config: %v", err)
+	}
+	for i := range c.Servers {
+		c.Servers[i].LastHadPlayers = time.Now()
 	}
 	config = c
 }
