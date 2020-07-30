@@ -7,7 +7,7 @@ servers:
     host: dane-us1.jttm.us
     port: 27015
     pass: xx
-    default_map: pl_upward
+    default_map: pl_badwater_pro_v12
   us-2:
     host: dane-us2.jttm.us
     port: 27015
@@ -22,7 +22,7 @@ servers:
     host: dane-eu1.jttm.us
     port: 27015
     pass: xx
-    default_map: pl_upward
+    default_map: pl_badwater_pro_v12
   eu-2:
     host: dane-eu2.jttm.us
     port: 27015

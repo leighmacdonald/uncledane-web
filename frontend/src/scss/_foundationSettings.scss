@@ -82,8 +82,8 @@ $medium-gray: #cacaca;
 $dark-gray: #8a8a8a;
 $black: #0a0a0a;
 $white: #fefefe;
-$body-background: $orange-dark;
-$body-font-color: $orange-light;
+$body-background: darken($orange-dark, 20%);
+$body-font-color: lighten($orange-light, 20%);
 $body-font-family: 'Helvetica Neue', Helvetica, Roboto, Arial, sans-serif;
 $body-antialiased: true;
 
@@ -423,7 +423,7 @@ $dropdownmenu-nested-margin: 0;
 $dropdownmenu-submenu-padding: $dropdownmenu-padding;
 $dropdownmenu-border: 1px solid $orange-dark;
 $dropdown-menu-item-color-active: get-color(primary);
-$dropdown-menu-item-background-active: transparent;
+$dropdown-menu-item-background-active: $orange-dark;
 
 // 19. Flexbox Utilities
 // ---------------------
@@ -875,7 +875,7 @@ $tooltip-radius: $global-radius;
 // -----------
 
 $topbar-padding: 0.5rem;
-$topbar-background: rgba(85, 55, 42, 1);
+$topbar-background: darken($body-background, 5%);
 $topbar-submenu-background: linear-gradient(180deg, rgba(85, 55, 42, 1) 0%, rgba(58, 38, 28, 1) 100%);
 $topbar-title-spacing: 0.5rem 1rem 0.5rem 0;
 $topbar-input-width: 200px;

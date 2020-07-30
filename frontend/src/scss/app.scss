@@ -18,7 +18,7 @@
         height: 300px;
     }
     
-    font-size: 125%;
+    //font-size: 125%;
     
     .menu-text a {
         color: lighten($orange-light, 20%);
@@ -33,14 +33,24 @@
         
         &:hover {
             color: lighten($orange-light, 20%);
+            background-color: $orange-dark;
         }
     }
     
     .top-bar {
-        background: linear-gradient(180deg, rgba(85, 55, 42, 1) 0%, rgba(58, 38, 28, 1) 100%);
+        background-color: darken($body-background, 5%);
+        -webkit-border-bottom-left-radius: 6px;
+        -webkit-border-bottom-right-radius: 6px;
+        -moz-border-radius-bottomleft: 6px;
+        -moz-border-radius-bottomright: 6px;
+        border-bottom-left-radius: 6px;
+        border-bottom-right-radius: 6px;
     }
     
     font-family: 'TF2 Build', "Helvetica Neue", Helvetica, Roboto, Arial, sans-serif;
+    -webkit-box-shadow: 0px 3px 13px -3px rgba(15,10,7,1);
+    -moz-box-shadow: 0px 3px 13px -3px rgba(15,10,7,1);
+    box-shadow: 0px 3px 13px -3px rgba(15,10,7,1);
 }
 
 #feet {
@@ -51,15 +61,19 @@
     background-repeat: no-repeat;
     height: 200px;
     margin-top: 1em;
+    
     .cell {
         padding-top: 7em;
     }
+    
     a {
         font-weight: 700;
     }
+    
     li, a {
         color: $orange-dark;
     }
+    
     -webkit-border-top-left-radius: 6px;
     -webkit-border-top-right-radius: 6px;
     -moz-border-radius-topleft: 6px;
@@ -83,15 +97,12 @@
         border-radius: 6px;
     }
     
-    tbody > tr:hover {
-        background-color: darken($orange-dark, 5%);
-        cursor: pointer;
-    }
     .server_info, .player_info {
         -moz-border-radius: 6px;
         border-radius: 6px;
         margin-bottom: 10px;
     }
+    
     .server_info {
         background-color: darken($body-background, 5%);
         
@@ -99,17 +110,21 @@
             background-color: darken($body-background, 10%);
             cursor: pointer;
         }
+        
         h5, h6, p {
             text-align: center;
             padding-top: 15px;
         }
+        
         h5 {
             padding-left: 20px;
             text-align: left;
         }
     }
+    
     .player_info {
         background-color: darken($body-background, 5%);
+        
         p {
             font-size: 90%;
         }
