@@ -9,36 +9,36 @@
                     {{ range .servers }}
                         <div class="cell server_info" data-toggletarget="status_{{ .Host }}{{ .Port }}">
                             <div class="grid-x grid-padding-x">
-                                <div class="cell medium-6">
-                                    <p>{{ .State.ServerName }}</p>
+                                <div class="cell medium-5">
+                                    <h5>{{ .State.ServerName }}</h5>
                                 </div>
-                                <div class="cell medium-2">
-                                    <p>{{ .State.Map }}</p>
+                                <div class="cell medium-2 text-center">
+                                    <h6>{{ .State.Map }}</h6>
                                 </div>
-                                <div class="cell medium-1">
-                                    <p>{{ .State.PlayersCount }} / 24</p>
+                                <div class="cell medium-2 text-center">
+                                    <h6>{{ .State.PlayersCount }} / 24</h6>
                                 </div>
-                                <div class="cell medium-3">
-                                    <a class="connect_link" href="steam://connect/{{ .Host }}:{{ .Port }}">Connect</a>
+                                <div class="cell medium-3 text-center">
+                                    <a class="connect_link round" href="steam://connect/{{ .Host }}:{{ .Port }}">Connect</a>
                                 </div>
                             </div>
                         </div>
                         <div class="cell player_info hide" id="status_{{ .Host }}{{ .Port }}">
                             <div class="grid-x grid-padding-x">
                                 <div class="cell medium-3">
-                                    <p>Player</p>
+                                    <h6>Player</h6>
                                 </div>
                                 <div class="cell medium-3">
-                                    <p>Connected</p>
+                                    <h6>Connected</h6>
                                 </div>
                                 <div class="cell medium-2">
-                                    <p>Ping</p>
+                                    <h6>Ping</h6>
                                 </div>
                                 <div class="cell medium-2">
-                                    <p>Loss</p>
+                                    <h6>Loss</h6>
                                 </div>
                                 <div class="cell medium-2">
-                                    <p>State</p>
+                                    <h6>State</h6>
                                 </div>
                             </div>
                             {{ range .State.Players }}
@@ -51,7 +51,7 @@
                                         <p>{{ .ConnectedTime }}</p>
                                     </div>
                                     <div class="cell medium-2">
-                                        <p>{{ .Ping }}</p>
+                                        <p>{{ .Ping }} ms</p>
                                     </div>
                                     <div class="cell medium-2">
                                         <p>{{ .Loss }}</p>
@@ -149,55 +149,56 @@
                     </ul>
                 </div>
 
-                <div class="cell">
+                <div class="cell rules">
                     <h2 class="text-center"  style="margin-top: 1em; margin-bottom: 1em">Server Details</h2>
-                    <h6>No random crits</h6>
-                    <p>No weapon can randomly crit on Uncletopia. This makes for more fair player interaction and
+                    <h5 class="text-center">No random crits</h5>
+                    <p class="text-center">No weapon can randomly crit on Uncletopia. This makes for more fair player interaction and
                         encourages skill.</p>
 
-                    <h6>No random bullet spread</h6>
-                    <p>Shotguns and Scatter Guns have fixed spread patterns. This makes the damage output of these
+                    <h5 class="text-center">No random bullet spread</h5>
+                    <p class="text-center">Shotguns and Scatter Guns have fixed spread patterns. This makes the damage output of these
                         weapons consistent.</p>
 
-                    <h6>Class limits (3)</h6>
-                    <p>Each team can only have three of one class at a time. This makes team composition more
+                    <h5 class="text-center">Class limits (3)</h5>
+                    <p class="text-center">Each team can only have three of one class at a time. This makes team composition more
                         balanced.</p>
 
-                    <h6>High Ping Limit</h6>
-                    <p>If you have more than 180 ping for more than 1 minute, you will be automatically kicked
+                    <h5 class="text-center">High Ping Limit</h5>
+                    <p class="text-center">If you have more than 180 ping for more than 1 minute, you will be automatically kicked
                         from the server. This makes it so players will not have to play against extremely
                         laggy opponents. If there are less than 12 players on the server, this rule does not
                         apply to help with seeding.</p>
 
-                    <h6>Sprays disabled</h6>
-                    <p>Sprays are not able to be seen on Uncletopia. This is to prevent inappropriate images from being
+                    <h5 class="text-center">Sprays disabled</h5>
+                    <p class="text-center">Sprays are not able to be seen on Uncletopia. This is to prevent inappropriate images from being
                         displayed.</p>
 
-                    <h6>Teammate player collision disabled</h6>
-                    <p>When you bump into another teammate on Uncletopia, neither of your respective player models
+                    <h5 class="text-center">Teammate player collision disabled</h5>
+                    <p class="text-center">When you bump into another teammate on Uncletopia, neither of your respective player models
                         will be moved. This is to prevent griefing.</p>
 
-                    <h6>Round start explosive jumping enabled</h6>
-                    <p>In Valve servers, you are unable to explosive jump at the beginning of the round. In Uncletopia,
+                    <h5 class="text-center">Round start explosive jumping enabled</h5>
+                    <p class="text-center">In Valve servers, you are unable to explosive jump at the beginning of the round. In Uncletopia,
                         you are able to do so. This is to encourage skillful rollouts.</p>
 
-                    <h6>Voting to change map enabled</h6>
-                    <p>RTV (rock the vote) is a sourcemod plugin that allows players to initiate server-wide vote to
+                    <h5 class="text-center">Voting to change map enabled</h5>
+                    <p class="text-center">RTV (rock the vote) is a sourcemod plugin that allows players to initiate server-wide vote to
                         change the map. Type either “!rtv” or “rtv” to vote.</p>
 
-                    <h6>Voting to scramble teams enabled (thanks HiGPS!)</h6>
-                    <p>You can type <kbd>!vscramble</kbd> to vote to scramble the teams after the round ends. At least
+                    <h5 class="text-center">Voting to scramble teams enabled (thanks HiGPS!)</h5>
+                    <p class="text-center">You can type <kbd>!vscramble</kbd> to vote to scramble the teams after the round ends. At least
                         8 players need to vote in order to scramble teams.</p>
 
-                    <h6>sv_pure 1 enabled</h6>
-                    <p>You are able to use custom first-person viewmodel animations on Uncletopia.</p>
+                    <h5 class="text-center">sv_pure 1 enabled</h5>
+                    <p class="text-center">You are able to use custom first-person viewmodel animations on Uncletopia.</p>
 
-                    <h6>No bots (except that scout running at you)</h6>
-                    <p>Uncletopia will never seed the server with player bots. Cheater bots only really join Casual
+                    <h5 class="text-center">No bots (except that scout running at you)</h5>
+                    <p class="text-center">Uncletopia will never seed the server with player bots. Cheater bots only really join Casual
                         Mode, so it is extremely unlikely you will encounter them in community servers. If you wish to
                         report a player for suspicious activity, please ping an Uncletopia mod on Discord.</p>
-
-
+                </div>
+                <div class="cell rules">
+                    <p><img src="/dist/images/graph.png"></p>
                 </div>
             </div>
         </div>
