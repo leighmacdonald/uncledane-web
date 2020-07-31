@@ -9,7 +9,10 @@
                     {{ range .servers }}
                         <div class="cell server_info" data-toggletarget="status_{{ .Host }}{{ .Port }}">
                             <div class="grid-x grid-padding-x">
-                                <div class="cell medium-5">
+                                <div class="cell medium-1">
+                                    <img src="/dist/images/flag-{{ .CountryCode }}.png">
+                                </div>
+                                <div class="cell medium-4">
                                     <h5>{{ .State.ServerName }}</h5>
                                 </div>
                                 <div class="cell medium-2 text-center">

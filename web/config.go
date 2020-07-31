@@ -26,6 +26,7 @@ type Server struct {
 	Port           uint16 `mapstructure:"port"`
 	Pass           string `mapstructure:"pass"`
 	DefaultMap     string `mapstructure:"default_map"`
+	CountryCode    string `mapstructure:"country_code"`
 	LastHadPlayers time.Time
 	State          steamid.Status
 }
