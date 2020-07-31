@@ -14,7 +14,7 @@
 
 #header {
     .image {
-        background-image: url("../public/images/header_1280_300.png");
+        background-image: url("../public/images/header_1920_450.jpg");
         height: 300px;
     }
 
@@ -73,7 +73,7 @@
     li, a {
         color: $orange-light;
     }
-    
+
     -webkit-border-top-left-radius: 6px;
     -webkit-border-top-right-radius: 6px;
     -moz-border-radius-topleft: 6px;
@@ -84,7 +84,7 @@
 
 #servers {
     font-size: 125%;
-    
+
     .connect_link {
         @include button(true, $connect-background, lighten($connect-background, 5%), $orange-dark);
         font-weight: 900;
@@ -96,39 +96,39 @@
         -moz-border-radius: 6px;
         border-radius: 6px;
     }
-    
+
     .server_info, .player_info {
         -moz-border-radius: 6px;
         border-radius: 6px;
         margin-bottom: 10px;
     }
     .flag img {
-        
+
         height: 50px;
         width: 50px;
     }
     .server_info {
         background-color: darken($body-background, 5%);
-        
+
         &:hover {
             background-color: darken($body-background, 10%);
             cursor: pointer;
         }
-        
+
         h5, h6, p {
             text-align: center;
             padding-top: 15px;
         }
-        
+
         h5 {
             padding-left: 20px;
             text-align: left;
         }
     }
-    
+
     .player_info {
         background-color: darken($body-background, 5%);
-        
+
         p {
             font-size: 90%;
         }
@@ -139,7 +139,7 @@
 .map_link {
     font-weight: 700;
     color: $orange-light;
-    
+
     &:hover {
         color: lighten($orange-light, 10%);
     }
