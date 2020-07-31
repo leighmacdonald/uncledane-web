@@ -17,26 +17,26 @@
         background-image: url("../public/images/header_1280_300.png");
         height: 300px;
     }
-    
+
     //font-size: 125%;
-    
+
     .menu-text a {
         color: lighten($orange-light, 20%);
-        
+
         &:hover {
             color: lighten($orange-light, 10%);
         }
     }
-    
+
     .dropdown li:not(.has-form) a:not(.button) {
         color: lighten($orange-light, 10%);
-        
+
         &:hover {
             color: lighten($orange-light, 20%);
             background-color: $orange-dark;
         }
     }
-    
+
     .top-bar {
         background-color: darken($body-background, 5%);
         -webkit-border-bottom-left-radius: 6px;
@@ -46,7 +46,7 @@
         border-bottom-left-radius: 6px;
         border-bottom-right-radius: 6px;
     }
-    
+
     font-family: 'TF2 Build', "Helvetica Neue", Helvetica, Roboto, Arial, sans-serif;
     -webkit-box-shadow: 0px 3px 13px -3px rgba(15,10,7,1);
     -moz-box-shadow: 0px 3px 13px -3px rgba(15,10,7,1);
@@ -61,19 +61,19 @@
     background-repeat: no-repeat;
     height: 200px;
     margin-top: 1em;
-    
+
     .cell {
-        padding-top: 7em;
+        padding-top: 6em;
     }
-    
+
     a {
         font-weight: 700;
     }
-    
+
     li, a {
-        color: $orange-dark;
+        color: $orange-light;
     }
-    
+
     -webkit-border-top-left-radius: 6px;
     -webkit-border-top-right-radius: 6px;
     -moz-border-radius-topleft: 6px;
@@ -84,9 +84,9 @@
 
 #servers {
     font-size: 125%;
-    
+
     .connect_link {
-        @include button(true, $orange-light, darken($orange-light, 5%), $orange-dark);
+        @include button(true, $connect-background, lighten($connect-background, 5%), $orange-dark);
         font-weight: 900;
         color: lighten($orange-light, 10%) !important;
         margin-bottom: 0;
@@ -96,35 +96,35 @@
         -moz-border-radius: 6px;
         border-radius: 6px;
     }
-    
+
     .server_info, .player_info {
         -moz-border-radius: 6px;
         border-radius: 6px;
         margin-bottom: 10px;
     }
-    
+
     .server_info {
         background-color: darken($body-background, 5%);
-        
+
         &:hover {
             background-color: darken($body-background, 10%);
             cursor: pointer;
         }
-        
+
         h5, h6, p {
             text-align: center;
             padding-top: 15px;
         }
-        
+
         h5 {
             padding-left: 20px;
             text-align: left;
         }
     }
-    
+
     .player_info {
         background-color: darken($body-background, 5%);
-        
+
         p {
             font-size: 90%;
         }
@@ -135,7 +135,7 @@
 .map_link {
     font-weight: 700;
     color: $orange-light;
-    
+
     &:hover {
         color: lighten($orange-light, 10%);
     }
