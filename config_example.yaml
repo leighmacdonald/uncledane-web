@@ -1,6 +1,6 @@
 listen_http: ":8003"
 static_path: "frontend/dist"
-empty_max_age: 2m
+empty_max_age: 5m
 graph_url: "https://grafana/render/d-solo/xxxxxxxxx/uncletopia-tf2-cluster?orgId=1&refresh=30s&from=1596051801000&to=1596073401000&panelId=5&width=1000&height=500&tz=America%2FEdmonton"
 servers:
   us-1:
