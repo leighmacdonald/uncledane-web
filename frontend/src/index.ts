@@ -27,9 +27,12 @@ function main() {
 }
 
 function server_click_handler(evt) {
-    evt.preventDefault()
     const target = (<HTMLDivElement>(evt.currentTarget)).dataset.toggletarget
-    document.getElementById(target).classList.toggle("hide")
+    if (target != "") {
+        document.getElementById(target).classList.toggle("hide")
+    } else {
+        evt.preventDefault()
+    }
 }
 
 function init_servers() {

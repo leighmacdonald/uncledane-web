@@ -127,11 +127,24 @@ func (a *App) handleIndex(c *gin.Context) {
 }
 
 func (a *App) handleServers(c *gin.Context) {
-	serversMu.RLock()
-	servers := servers
-	serversMu.RUnlock()
+	type serverInfo struct {
+		Region  string
+		Servers []*Server
+	}
+	order := viper.GetStringSlice("order")
+	var s []serverInfo
+	for _, orderKey := range order {
+		var si serverInfo
+		si.Region = orderKey
+		for _, s := range servers {
+			if s.Region == orderKey {
+				si.Servers = append(si.Servers, s)
+			}
+		}
+		s = append(s, si)
+	}
 	a.render(c, "servers", M{
-		"servers": servers,
+		"servers": s,
 	})
 }
 

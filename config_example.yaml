@@ -1,35 +1,44 @@
 listen_http: ":8003"
 static_path: "frontend/dist"
 empty_max_age: 5m
-graph_url: "https://grafana/render/d-solo/xxxxxxxxx/uncletopia-tf2-cluster?orgId=1&refresh=30s&from=1596051801000&to=1596073401000&panelId=5&width=1000&height=500&tz=America%2FEdmonton"
+graph_url: "https://grafana/render/d-solo/xxxxxxxxx/uncletopia-tf2-cluster?orgId=1&refresh=30s&from=1596051801000&to=1596073401000&panelId=5&width=1000&height=200&tz=America%2FEdmonton"
+order:
+  - US-West
+  - US-East
+  - EU-Central
+
 servers:
-  us-1:
-    host: dane-us1.jttm.us
+  - host: us1.uncledane.com
     port: 27015
     pass: xx
+    region: US West
     country_code: us
     default_map: pl_badwater_pro_v12
-  us-2:
-    host: dane-us2.jttm.us
+
+  - host: us3.uncledane.com
     port: 27015
     pass: xx
+    region: US West
     country_code: us
     default_map: pl_upward
-  us-3:
-    host: dane-us3.jttm.us
+
+  - host: us2.uncledane.com
     port: 27015
     pass: xx
+    region: US East
     country_code: us
     default_map: pl_upward
-  eu-1:
-    host: dane-eu1.jttm.us
+
+  - host: eu1.uncledane.com
     port: 27015
     pass: xx
+    region: EU Central
     country_code: de
     default_map: pl_badwater_pro_v12
-  eu-2:
-    host: dane-eu2.jttm.us
+
+  - host: eu2.uncledane.com
     port: 27015
     pass: xx
+    region: EU Central
     country_code: de
     default_map: pl_upward
