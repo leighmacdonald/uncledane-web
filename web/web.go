@@ -12,6 +12,7 @@ import (
 	"html/template"
 	"net/http"
 	"os"
+	"path"
 	"path/filepath"
 	"strings"
 	"time"
@@ -34,12 +35,12 @@ func New() *App {
 	}
 	var templateFiles []string
 	root := "templates"
-	if err := filepath.Walk(root, func(path string, info os.FileInfo, err error) error {
+	if err := filepath.Walk(root, func(p string, info os.FileInfo, err error) error {
 		if err != nil {
 			return err
 		}
 		if strings.HasSuffix(info.Name(), ".gohtml") {
-			if !strings.Contains(path, "/layouts/") && !strings.Contains(path, "/partials") {
+			if !strings.Contains(p, "/layouts/") && !strings.Contains(p, "/partials") {
 				templateFiles = append(templateFiles, info.Name())
 			}
 		}
@@ -54,11 +55,11 @@ func New() *App {
 	}
 	r.Static("/dist", staticPath)
 	r.StaticFile("/favicon.ico", "./resources/favicon.ico")
-	var newPagesSet = func(path string) []string {
+	var newPagesSet = func(p string) []string {
 		return []string{
-			fmt.Sprintf("templates/%s.gohtml", path),
+			path.Join("templates", fmt.Sprintf("/%s.gohtml", p)),
 			//"templates/partials/page_header.gohtml",
-			"templates/layouts/layout.gohtml",
+			path.Join("templates", "layouts", "layout.gohtml"),
 		}
 	}
 	for _, p := range templateFiles {
