@@ -48,9 +48,9 @@
     }
 
     font-family: 'TF2 Build', "Helvetica Neue", Helvetica, Roboto, Arial, sans-serif;
-    -webkit-box-shadow: 0px 3px 13px -3px rgba(15,10,7,1);
-    -moz-box-shadow: 0px 3px 13px -3px rgba(15,10,7,1);
-    box-shadow: 0px 3px 13px -3px rgba(15,10,7,1);
+    -webkit-box-shadow: 0 3px 13px -3px rgba(15,10,7,1);
+    -moz-box-shadow: 0 3px 13px -3px rgba(15,10,7,1);
+    box-shadow: 0 3px 13px -3px rgba(15,10,7,1);
 }
 
 #feet {
@@ -172,4 +172,27 @@ p {
     p {
         margin-bottom: 2em;
     }
+}
+
+$rotation: 3deg;
+
+.home_grid {
+    > div {
+        margin-bottom: 1em;
+    }
+    padding-top: 1rem;
+    .rotate_right:hover {
+        -webkit-transform: rotate($rotation);
+        transform: rotate($rotation);
+
+    }
+    .rotate_left:hover {
+        -webkit-transform: rotate(-$rotation);
+        transform: rotate(-$rotation);
+    }
+}
+
+img.center {
+    display: block;
+    margin: 0 auto;
 }

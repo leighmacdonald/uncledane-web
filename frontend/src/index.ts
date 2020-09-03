@@ -23,7 +23,20 @@ function main() {
         case "/servers":
             init_servers()
             break
+        case "/":
+            init_homepage()
+            break
     }
+}
+
+function init_homepage() {
+    const channelID = "UCu0PSyLD5p_J5osLk5UD0pw";
+    const reqURL = "https://www.youtube.com/feeds/videos.xml?channel_id=";
+    $.getJSON("https://api.rss2json.com/v1/api.json?rss_url=" + encodeURIComponent(reqURL)+channelID, function(data) {
+        const link = data.items[0].link;
+        const id = link.substr(link.indexOf("=")+1);
+        $("#youtube_video").attr("src","https://youtube.com/embed/"+id + "?controls=0&showinfo=0&rel=0");
+    });
 }
 
 function server_click_handler(evt) {

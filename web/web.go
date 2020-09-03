@@ -70,6 +70,7 @@ func New() *App {
 	r.GET("/servers", a.handleServers)
 	r.GET("/donate", a.handleDonate)
 	r.GET("/credits", a.handleCredits)
+	r.GET("/settings", a.handleSettings)
 
 	a.router = r
 	return &a
@@ -155,6 +156,10 @@ func (a *App) handleDonate(c *gin.Context) {
 
 func (a *App) handleCredits(c *gin.Context) {
 	a.render(c, "credits", M{})
+}
+
+func (a *App) handleSettings(c *gin.Context) {
+	a.render(c, "settings", M{})
 }
 
 // HTTPOpts is used to configure a http.Server instance
