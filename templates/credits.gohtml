@@ -1,14 +1,23 @@
 {{define "content"}}
     <div class="grid-container">
-        <div class="grid-y grid-padding-y">
+        <div class="grid-x grid-margin-x grid-margin-y">
             <div class="cell">
-                <h1 class="text-center">Video & Commission Credits</h1>
-                <p class="text-center">
-                    Construction dude is working hard to get this completed, just look at him.
-                    Real list coming soon.
-                </p>
-                <img class="center" src="/dist/images/construction.gif" alt="construction dude">
+                <h1 class="text-center header_h1">Video Credits</h1>
             </div>
+            {{ range .credits }}
+                <div class="cell large-6 small-12 credit_block">
+                    <h3><a href="{{ .URL }}">{{ .Title }}</a></h3>
+                    <ul>
+                        <li>MUSIC
+                            <ul>
+                                {{ range .Music}}
+                                    <li>{{ . }}</li>
+                                {{ end }}
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            {{ end }}
         </div>
     </div>
 {{end}}

@@ -10,6 +10,7 @@
   "homepage": "https://uncledane.com",
   "scripts": {
     "compress": "./compress.sh",
+    "dev": "cross-env NODE_ENV=development parcel build --public-url /dist src/index.ts",
     "watch": "cross-env NODE_ENV=development parcel --public-url /dist src/index.ts",
     "build": "./compress.sh && cross-env NODE_ENV=production parcel build --public-url /dist src/index.ts"
   },
