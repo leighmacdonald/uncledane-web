@@ -11,65 +11,67 @@
                             <h3 class="text-center">{{ .Region }}</h3>
                         </div>
                         {{ range  .Servers }}
-                            <div class="cell server_info" data-toggletarget="status_{{ .Host }}{{ .Port }}">
-                                <div class="grid-x grid-padding-x">
-                                    <div class="cell medium-1">
-                                        <img src="/dist/images/flag-{{ .CountryCode }}.png">
-                                    </div>
-                                    <div class="cell medium-4">
-                                        <h5>{{ .State.ServerName }}</h5>
-                                    </div>
-                                    <div class="cell medium-2 text-center">
-                                        <h6>{{ .State.Map }}</h6>
-                                    </div>
-                                    <div class="cell medium-2 text-center">
-                                        <h6>{{ .State.PlayersCount }} / 24</h6>
-                                    </div>
-                                    <div class="cell medium-3 text-center">
-                                        <a class="connect_link round"
-                                           href="steam://connect/{{ .Host }}:{{ .Port }}">Connect</a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="cell player_info hide" id="status_{{ .Host }}{{ .Port }}">
-                                <div class="grid-x grid-padding-x">
-                                    <div class="cell medium-3">
-                                        <h6>Player</h6>
-                                    </div>
-                                    <div class="cell medium-3">
-                                        <h6>Connected</h6>
-                                    </div>
-                                    <div class="cell medium-2">
-                                        <h6>Ping</h6>
-                                    </div>
-                                    <div class="cell medium-2">
-                                        <h6>Loss</h6>
-                                    </div>
-                                    <div class="cell medium-2">
-                                        <h6>State</h6>
+                            {{ if ne .State.ServerName "" }}
+                                <div class="cell server_info" data-toggletarget="status_{{ .Host }}{{ .Port }}">
+                                    <div class="grid-x grid-padding-x">
+                                        <div class="cell medium-1">
+                                            <img src="/dist/images/flag-{{ .CountryCode }}.png">
+                                        </div>
+                                        <div class="cell medium-4">
+                                            <h5>{{ .State.ServerName }}</h5>
+                                        </div>
+                                        <div class="cell medium-2 text-center">
+                                            <h6>{{ .State.Map }}</h6>
+                                        </div>
+                                        <div class="cell medium-2 text-center">
+                                            <h6>{{ .State.PlayersCount }} / 24</h6>
+                                        </div>
+                                        <div class="cell medium-3 text-center">
+                                            <a class="connect_link round"
+                                               href="steam://connect/{{ .Host }}:{{ .Port }}">Connect</a>
+                                        </div>
                                     </div>
                                 </div>
-                                {{ range .State.Players }}
+                                <div class="cell player_info hide" id="status_{{ .Host }}{{ .Port }}">
                                     <div class="grid-x grid-padding-x">
                                         <div class="cell medium-3">
-                                            <a class="map_link"
-                                               href="https://steamcommunity.com/profiles/{{ .SID }}">{{ .Name }}</a>
+                                            <h6>Player</h6>
                                         </div>
                                         <div class="cell medium-3">
-                                            <p>{{ .ConnectedTime }}</p>
+                                            <h6>Connected</h6>
                                         </div>
                                         <div class="cell medium-2">
-                                            <p>{{ .Ping }} ms</p>
+                                            <h6>Ping</h6>
                                         </div>
                                         <div class="cell medium-2">
-                                            <p>{{ .Loss }}</p>
+                                            <h6>Loss</h6>
                                         </div>
                                         <div class="cell medium-2">
-                                            <p>{{ .State }}</p>
+                                            <h6>State</h6>
                                         </div>
                                     </div>
-                                {{ end }}
-                            </div>
+                                    {{ range .State.Players }}
+                                        <div class="grid-x grid-padding-x">
+                                            <div class="cell medium-3">
+                                                <a class="map_link"
+                                                   href="https://steamcommunity.com/profiles/{{ .SID }}">{{ .Name }}</a>
+                                            </div>
+                                            <div class="cell medium-3">
+                                                <p>{{ .ConnectedTime }}</p>
+                                            </div>
+                                            <div class="cell medium-2">
+                                                <p>{{ .Ping }} ms</p>
+                                            </div>
+                                            <div class="cell medium-2">
+                                                <p>{{ .Loss }}</p>
+                                            </div>
+                                            <div class="cell medium-2">
+                                                <p>{{ .State }}</p>
+                                            </div>
+                                        </div>
+                                    {{ end }}
+                                </div>
+                            {{end}}
                         {{end}}
                     {{ end }}
                 </div>
@@ -88,8 +90,6 @@
                         </li>
                         <li class="text-center"><a class="map_link" href="https://wiki.teamfortress.com/wiki/Borneo">pl_borneo</a>
                         </li>
-                        <li class="text-center"><a class="map_link" href="https://wiki.teamfortress.com/wiki/Gold_Rush">pl_goldrush</a>
-                        </li>
                         <li class="text-center"><a class="map_link"
                                                    href="https://wiki.teamfortress.com/wiki/Snowycoast">pl_snowycoast</a>
                         </li>
@@ -97,6 +97,10 @@
                                                    href="https://wiki.teamfortress.com/wiki/Swiftwater">pl_swiftwater_final1</a>
                         </li>
                         <li class="text-center"><a class="map_link" href="https://wiki.teamfortress.com/wiki/Upward">pl_upward</a>
+                        </li>
+                        <li class="text-center"><a class="map_link" href="https://wiki.teamfortress.com/wiki/Enclosure">pl_enclosure</a>
+                        </li>
+                        <li class="text-center"><a class="map_link" href="https://wiki.teamfortress.com/wiki/Frontier">pl_frontier</a>
                         </li>
                     </ul>
                 </div>
@@ -124,14 +128,8 @@
                         </li>
                         <li class="text-center"><a class="map_link" href="https://wiki.teamfortress.com/wiki/Vanguard">cp_vanguard</a>
                         </li>
-                        <li class="text-center"><a class="map_link" href="https://wiki.teamfortress.com/wiki/Dustbowl">cp_dustbowl</a>
                         </li>
-                        <li class="text-center"><a class="map_link" href="https://wiki.teamfortress.com/wiki/Gorge">cp_gorge</a>
-                        </li>
-                        <li class="text-center"><a class="map_link"
-                                                   href="https://wiki.teamfortress.com/wiki/Mountain_Lab">cp_mountainlab</a>
-                        </li>
-                        <li class="text-center"><a class="map_link" href="https://wiki.teamfortress.com/wiki/Steel">cp_steel</a>
+                        <li class="text-center"><a class="map_link" href="https://wiki.teamfortress.com/wiki/Granary">cp_granary</a>
                         </li>
                     </ul>
                 </div>
@@ -148,12 +146,23 @@
                         </li>
                         <li class="text-center"><a class="map_link" href="https://wiki.teamfortress.com/wiki/Lazarus">koth_lazarus</a>
                         </li>
+                        <li class="text-center"><a class="map_link" href="https://wiki.teamfortress.com/wiki/Sawmill">koth_sawmill</a>
+                        </li>
                     </ul>
                 </div>
                 <div class="cell medium-3">
-                    <h4 class="text-center">CTF</h4>
+                    <h4 class="text-center">Attack/Defend</h4>
                     <ul class="map_list">
-                        <li class="text-center"><a class="map_link" href="https://wiki.teamfortress.com/wiki/Landfall">ctf_landfall</a>
+                        <li class="text-center"><a class="map_link" href="https://wiki.teamfortress.com/wiki/Dustbowl">cp_dustbowl</a>
+                        </li>
+                        <li class="text-center"><a class="map_link" href="https://wiki.teamfortress.com/wiki/Gorge">cp_gorge</a>
+                        </li>
+                        <li class="text-center"><a class="map_link"
+                                                   href="https://wiki.teamfortress.com/wiki/Mountain_Lab">cp_mountainlab</a>
+                        </li>
+                        <li class="text-center"><a class="map_link" href="https://wiki.teamfortress.com/wiki/Steel">cp_steel</a>
+                        </li>
+                        <li class="text-center"><a class="map_link" href="https://wiki.teamfortress.com/wiki/Mossrock">cp_mossrock</a>
                         </li>
                     </ul>
                 </div>
