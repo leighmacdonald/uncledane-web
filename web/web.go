@@ -162,6 +162,28 @@ func (a *App) handleCredits(c *gin.Context) {
 	}
 	creds := []cr{
 		{
+			URL:   "https://www.youtube.com/watch?v=cxGJAgaqaL8",
+			Title: "Scream Fortress Again",
+			Music: []string{
+				"Team Fortress 2 -- Misfortune Teller",
+				"Team Fortress 2 -- Haunted Fortress",
+				"Team Fortress 2 -- Carousel of Curses",
+				"Undertale -- sans.",
+				"Undertale -- Dogbass",
+				"Hades -- House of Hades",
+				"Hades -- Out of Tartarus",
+				"Hades -- Wretched Shades",
+				"Hades -- The Painful Way",
+			},
+		},
+		{
+			URL:   "https://www.youtube.com/watch?v=91pcGACXt5M",
+			Title: "Engie Brain #3 - Using The Jag",
+			Music: []string{
+				"Animal Crossing: New Leaf -- 8am",
+			},
+		},
+		{
 			URL:   "https://www.youtube.com/watch?v=tvQrOksU-Kg",
 			Title: "The Panic Attack Is Good, Actually",
 			Music: []string{
