@@ -162,6 +162,14 @@ func (a *App) handleCredits(c *gin.Context) {
 	}
 	creds := []cr{
 		{
+			URL:   "https://www.youtube.com/watch?v=AU5E_bJycE4",
+			Title: "Texas Style",
+			Music: []string{
+				"April March -- Chick Habit",
+				"Jurassic 5 -- A Day At The Races,
+			},
+		},
+		{
 			URL:   "https://www.youtube.com/watch?v=cxGJAgaqaL8",
 			Title: "Scream Fortress Again",
 			Music: []string{
