@@ -40,7 +40,7 @@ func New() *App {
 			return err
 		}
 		if strings.HasSuffix(info.Name(), ".gohtml") {
-			if !strings.Contains(p, "/layouts/") && !strings.Contains(p, "/partials") {
+			if !strings.Contains(p, "layouts") && !strings.Contains(p, "partials") {
 				templateFiles = append(templateFiles, info.Name())
 			}
 		}
@@ -57,7 +57,7 @@ func New() *App {
 	r.StaticFile("/favicon.ico", "./resources/favicon.ico")
 	var newPagesSet = func(p string) []string {
 		return []string{
-			path.Join("templates", fmt.Sprintf("/%s.gohtml", p)),
+			path.Join("templates", fmt.Sprintf("%s.gohtml", p)),
 			//"templates/partials/page_header.gohtml",
 			path.Join("templates", "layouts", "layout.gohtml"),
 		}
@@ -71,6 +71,7 @@ func New() *App {
 	r.GET("/donate", a.handleDonate)
 	r.GET("/credits", a.handleCredits)
 	r.GET("/settings", a.handleSettings)
+	r.GET("/embed", a.handleOEmbed)
 
 	a.router = r
 	return &a
@@ -154,6 +155,19 @@ func (a *App) handleDonate(c *gin.Context) {
 	a.render(c, "donate", M{})
 }
 
+func (a *App) handleOEmbed(c *gin.Context) {
+	c.JSON(200, M{
+		"version":       "1.0",
+		"type":          "rich",
+		"title":         "Uncle Dane",
+		"description":   "Uncle Dane",
+		"author_name":   "Uncle Dane",
+		"author_url":    "https://uncledane.com",
+		"provider_name": "Check out my Uncletopia TF2 Servers",
+		"provider_url":  "https://uncledane.com/servers",
+	})
+}
+
 func (a *App) handleCredits(c *gin.Context) {
 	type cr struct {
 		URL   string
@@ -166,7 +180,7 @@ func (a *App) handleCredits(c *gin.Context) {
 			Title: "Texas Style",
 			Music: []string{
 				"April March -- Chick Habit",
-				"Jurassic 5 -- A Day At The Races,
+				"Jurassic 5 -- A Day At The Races",
 			},
 		},
 		{
