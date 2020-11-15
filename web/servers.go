@@ -7,9 +7,6 @@ import (
 	"github.com/leighmacdonald/steamid"
 	"github.com/pkg/errors"
 	log "github.com/sirupsen/logrus"
-	"io/ioutil"
-	"net/http"
-	"path"
 	"sync"
 	"time"
 )
@@ -18,27 +15,6 @@ var (
 	servers   []*Server
 	serversMu *sync.RWMutex
 )
-
-func updateGraph() {
-	if config.GraphURL == "" {
-		return
-	}
-	resp, err := http.Get(config.GraphURL)
-	if err != nil {
-		log.Errorf("Failed to download graph: %v", err)
-		return
-	}
-	p := path.Join(config.StaticPath, "images/graph.png")
-	b, err := ioutil.ReadAll(resp.Body)
-	if err != nil {
-		log.Errorf("Failed to read resp body: %v", err)
-		return
-	}
-	if err := ioutil.WriteFile(p, b, 0755); err != nil {
-		log.Errorf("Failed to write file %s: %v", p, err)
-		return
-	}
-}
 
 func updateState() {
 	var wg sync.WaitGroup
@@ -79,17 +55,13 @@ func updateState() {
 
 func updateWorker(ctx context.Context) {
 	updateState()
-	updateGraph()
 	t := time.NewTicker(60 * time.Second)
-	tGraph := time.NewTicker(5 * time.Minute)
 	for {
 		select {
 		case <-ctx.Done():
 			return
 		case <-t.C:
 			updateState()
-		case <-tGraph.C:
-			updateGraph()
 		}
 	}
 }
