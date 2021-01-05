@@ -176,6 +176,16 @@ func (a *App) handleCredits(c *gin.Context) {
 	}
 	creds := []cr{
 		{
+			URL:   "https://www.youtube.com/watch?v=3u8JBh3ciIs",
+			Title: "How To Fight Every Class In TF2 (As Engineer) (And Win!)",
+			Music: []string{
+				"Super Smash Brothers Ultimate -- Menu Theme",
+				"Alex Giudici -- More Gun (Alex Giudici Remix)",
+				"Team Fortress 2 -- Various Tracks from the TF2 OST",
+				"Epidemic Sound -- Various free rights music",
+			},
+		},
+		{
 			URL:   "https://www.youtube.com/watch?v=AU5E_bJycE4",
 			Title: "Texas Style",
 			Music: []string{
