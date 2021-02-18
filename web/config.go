@@ -7,6 +7,7 @@ import (
 	"github.com/spf13/viper"
 	"log"
 	"os"
+	"sync"
 	"time"
 )
 
@@ -14,17 +15,20 @@ var config Config
 var cfgFile string
 
 type Config struct {
-	GraphURL    string             `mapstructure:"graph_url"`
-	EmptyMaxAge time.Duration      `mapstructure:"empty_max_age"`
-	Listen      string             `mapstructure:"listen_http"`
-	StaticPath  string             `mapstructure:"static_path"`
-	Servers     map[string]*Server `mapstructure:"servers"`
+	GraphURL    string        `mapstructure:"graph_url"`
+	EmptyMaxAge time.Duration `mapstructure:"empty_max_age"`
+	Listen      string        `mapstructure:"listen_http"`
+	StaticPath  string        `mapstructure:"static_path"`
+	Servers     []*Server     `mapstructure:"servers"`
+	Order       []string      `mapstructure:"order"`
 }
 
 type Server struct {
+	*sync.RWMutex
 	Host           string `mapstructure:"host"`
 	Port           uint16 `mapstructure:"port"`
 	Pass           string `mapstructure:"pass"`
+	Region         string `mapstructure:"region"`
 	DefaultMap     string `mapstructure:"default_map"`
 	CountryCode    string `mapstructure:"country_code"`
 	LastHadPlayers time.Time
@@ -55,15 +59,17 @@ func InitConfig() {
 	// If a config file is found, read it in.
 	if err := viper.ReadInConfig(); err == nil {
 		fmt.Println("Using config file:", viper.ConfigFileUsed())
+	} else {
+		log.Fatalf("Failed to read config file: %v", err)
 	}
-	c := Config{
-		Servers: make(map[string]*Server),
-	}
+	c := Config{}
 	if err := viper.Unmarshal(&c); err != nil {
 		log.Fatalf("Failed to unmarshal config: %v", err)
 	}
-	for i := range c.Servers {
-		c.Servers[i].LastHadPlayers = time.Now()
+	for _, s := range c.Servers {
+		s.RWMutex = &sync.RWMutex{}
+		s.LastHadPlayers = time.Now()
 	}
+	servers = c.Servers
 	config = c
 }

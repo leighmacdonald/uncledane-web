@@ -7,48 +7,24 @@ import (
 	"github.com/leighmacdonald/steamid"
 	"github.com/pkg/errors"
 	log "github.com/sirupsen/logrus"
-	"io/ioutil"
-	"net/http"
-	"path"
 	"sync"
 	"time"
 )
 
 var (
-	servers   map[string]*Server
+	servers   []*Server
 	serversMu *sync.RWMutex
 )
 
-func updateGraph() {
-	if config.GraphURL == "" {
-		return
-	}
-	resp, err := http.Get(config.GraphURL)
-	if err != nil {
-		log.Errorf("Failed to download graph: %v", err)
-		return
-	}
-	p := path.Join(config.StaticPath, "images/graph.png")
-	b, err := ioutil.ReadAll(resp.Body)
-	if err != nil {
-		log.Errorf("Failed to read resp body: %v", err)
-		return
-	}
-	if err := ioutil.WriteFile(p, b, 0755); err != nil {
-		log.Errorf("Failed to write file %s: %v", p, err)
-		return
-	}
-}
-
 func updateState() {
 	var wg sync.WaitGroup
-	for k, v := range config.Servers {
+	for _, srv := range config.Servers {
 		wg.Add(1)
-		go func(name string, s *Server) {
+		go func(s *Server) {
 			log.Debugf("Updating state: %s", s.Host)
 			res, err := queryStatus(s)
 			if err != nil {
-				log.Errorf("Failed to queryStatus servers %s: %v", name, err)
+				log.Errorf("Failed to queryStatus servers %s: %v", s.Host, err)
 			}
 			if len(s.State.Players) == 0 {
 				age := time.Now().Sub(s.LastHadPlayers)
@@ -56,40 +32,36 @@ func updateState() {
 					if s.State.Map != s.DefaultMap {
 						log.WithField("Server", s.Host).Infof("Changing level due to max empty age: %s -> %s", s.State.Map, s.DefaultMap)
 						go func() {
-							_, err := queryExec(s, fmt.Sprintf("changelevel %s", s.DefaultMap))
-							if err != nil {
-								log.Errorf("Failed to changelevel")
-							}
+							cmd := fmt.Sprintf("changelevel %s", s.DefaultMap)
+							log.Debugf("Would have ran: %s", cmd)
+							//_, err := queryExec(s, cmd)
+							//if err != nil {
+							//	log.Errorf("Failed to changelevel")
+							//}
 						}()
 					}
 				}
 			} else {
 				s.LastHadPlayers = time.Now()
 			}
-			serversMu.Lock()
+			s.Lock()
 			s.State = res
-
-			servers[name] = s
-			serversMu.Unlock()
+			s.Unlock()
 			wg.Done()
-		}(k, v)
+		}(srv)
 	}
 	wg.Wait()
 }
 
 func updateWorker(ctx context.Context) {
 	updateState()
-	updateGraph()
 	t := time.NewTicker(60 * time.Second)
-	tGraph := time.NewTicker(5 * time.Minute)
 	for {
 		select {
 		case <-ctx.Done():
 			return
 		case <-t.C:
 			updateState()
-		case <-tGraph.C:
-			updateGraph()
 		}
 	}
 }
@@ -123,6 +95,5 @@ func queryStatus(server *Server) (steamid.Status, error) {
 }
 
 func init() {
-	servers = make(map[string]*Server)
 	serversMu = &sync.RWMutex{}
 }

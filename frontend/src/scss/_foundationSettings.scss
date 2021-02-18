@@ -71,8 +71,9 @@ $connect-background: rgb(112, 57, 13);
 $global-font-size: 110%;
 $global-width: rem-calc(1200);
 $global-lineheight: 1.5;
+// primary: #1779ba,
 $foundation-palette: (
-    primary: #1779ba,
+    primary: #c67e27,
     secondary: #767676,
     success: #3adb76,
     warning: #ffae00,
@@ -333,8 +334,8 @@ $buttongroup-radius-on-each: true;
 // 13. Callout
 // -----------
 
-$callout-background: $white;
-$callout-background-fade: 85%;
+$callout-background: darken($orange-dark, 5%);
+$callout-background-fade: 0%;
 $callout-border: 1px solid rgba($black, 0.25);
 $callout-margin: 0 0 1rem 0;
 $callout-sizes: (

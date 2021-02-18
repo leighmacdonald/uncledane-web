@@ -18,11 +18,17 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
         <title>Uncle Dane - {{ template "title" }}</title>
 
+        <meta content="Uncle Dane's Engineering Workshop" property="og:title">
+        <meta content="Texan Main" property="og:description">
+        <meta name="theme-color" content="#da8214">
+        <meta content="Uncle Dane" property="og:site_name">
+        <meta content='/dist/images/portrait_400x400.png' property='og:image'>
+
         <link rel="apple-touch-icon" sizes="180x180" href="/dist/images/apple-touch-icon.png">
         <link rel="icon" type="image/png" sizes="32x32" href="/dist/images/favicon-32x32.png">
         <link rel="icon" type="image/png" sizes="16x16" href="/dist/images/favicon-16x16.png">
         <link rel="manifest" href="/dist/images/site.webmanifest">
-
+        <link rel="alternate" type="application/json+oembed" href="/embed?format=json" />
         <link rel="stylesheet" href="/dist/index.css"/>
     </head>
     <body>
@@ -55,22 +61,24 @@
                                     <li><a href="https://steamcommunity.com/groups/UncleDane">Steam Group</a></li>
                                 </ul>
                             </li>
-                            <li><a href="/servers">TF2 Servers</a></li>
-                            <li><a class="header_link" href="#">Social Media</a>
+                            <li><a href="/servers">Servers</a></li>
+                            <li><a class="header_link" href="#">Social</a>
                                 <ul class="menu vertical">
-                                    <li><a class="header_link"a href="https://twitter.com/danekevincook">Twitter</a></li>
+                                    <li><a class="header_link" href="https://twitter.com/danekevincook">Twitter</a></li>
                                     <li><a href="https://www.instagram.com/danekevincook/">Instagram</a></li>
                                 </ul>
                             </li>
                             <li>
                                 <a href="#">Music</a>
                                 <ul class="menu vertical">
-                                    <li><a href="https://open.spotify.com/artist/6h8zXsBuNnbaHv8lIH5yrd">Spotify</a>
-                                    </li>
+                                    <li><a href="https://open.spotify.com/artist/6h8zXsBuNnbaHv8lIH5yrd">Spotify</a></li>
                                     <li><a href="https://uncledane.bandcamp.com/">Bandcamp</a></li>
                                     <li><a href="https://soundcloud.com/uncle-dane">Soundcloud</a></li>
                                 </ul>
                             </li>
+                            <li><a href="/settings">Settings</a></li>
+                            <li><a href="/credits">Credits</a></li>
+            			    <li><a href="https://teespring.com/stores/uncledane">Merch</a></li>
                             <li><a href="/donate">Donate</a></li>
                         </ul>
                     </div>
