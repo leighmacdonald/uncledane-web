@@ -176,6 +176,8 @@ p {
 }
 
 $rotation: 3deg;
+$borderRadius: 15px;
+$borderWidth: 5px;
 
 .home_grid {
     > div {
@@ -191,6 +193,30 @@ $rotation: 3deg;
         -webkit-transform: rotate(-$rotation);
         transform: rotate(-$rotation);
     }
+    video {
+        border-radius: $borderRadius;
+        -webkit-backface-visibility: hidden;
+        width: 100%;
+    }
+    .border_discord {
+        border: $borderWidth solid rgb(0, 42, 0);
+    }
+    .border_twitter {
+        border: $borderWidth solid rgb(0, 6, 107);
+    }
+    .border_merch {
+        border: $borderWidth solid rgb(50, 8, 61);
+    }
+    .border_servers {
+        border: $borderWidth solid rgb(139, 13, 0);
+    }
+    .border_credits {
+        border: $borderWidth solid rgb(153, 85, 0);
+    }
+    .border_settings {
+         border: $borderWidth solid rgb(103, 89, 44);
+    }
+
 }
 
 img.center {

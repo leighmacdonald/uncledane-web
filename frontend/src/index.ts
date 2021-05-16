@@ -37,6 +37,15 @@ function init_homepage() {
         const id = link.substr(link.indexOf("=")+1);
         $("#youtube_video").attr("src","https://youtube.com/embed/"+id + "?controls=0&showinfo=0&rel=0");
     });
+    console.log("test")
+    const elements = document.querySelectorAll(".home_grid video");
+    for (let i = 0; i < elements.length; i++) {
+        console.log("adding listener")
+        elements[i].addEventListener("mouseover", (e) => {
+            const element = e.target as HTMLMediaElement;
+            element.play();
+        });
+    }
 }
 
 function server_click_handler(evt) {
