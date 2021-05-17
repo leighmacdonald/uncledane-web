@@ -31,6 +31,7 @@ type Server struct {
 	Region         string `mapstructure:"region"`
 	DefaultMap     string `mapstructure:"default_map"`
 	CountryCode    string `mapstructure:"country_code"`
+	Continent      string `mapstructure:"continent"`
 	LastHadPlayers time.Time
 	State          steamid.Status
 }
