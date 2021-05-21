@@ -176,6 +176,14 @@ func (a *App) handleCredits(c *gin.Context) {
 	}
 	creds := []cr{
 		{
+			URL:   "https://www.youtube.com/watch?v=xlyCQCzgZeQ",
+			Title: "Makin' Bacon",
+			Music: []string{
+				"Sting -- Epilogue (Nothing 'Bout Me)",
+				"Dub Pistols -- Cyclone",
+			},
+		},
+		{
 			URL:   "https://www.youtube.com/watch?v=3u8JBh3ciIs",
 			Title: "How To Fight Every Class In TF2 (As Engineer) (And Win!)",
 			Music: []string{
