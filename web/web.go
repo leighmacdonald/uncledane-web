@@ -176,6 +176,55 @@ func (a *App) handleCredits(c *gin.Context) {
 	}
 	creds := []cr{
 		{
+			URL:   "https://www.youtube.com/watch?v=S-xG4yv5AHE",
+			Title: "Stock Engineer: THE WRENCH",
+			Music: []string{
+				"Halo 3 -- Luck",
+				"Halo 3 -- Behold A Pale Horse",
+				"Halo 3 -- Farthest Outpost",
+				"Halo 3 -- Out Of Shadow",
+				"Halo 3 -- One Final Effort",
+				"Halo CE -- Opening Suite",
+			},
+		},
+		{
+			URL:   "https://www.youtube.com/watch?v=WFtnWHhyVO4",
+			Title: "Stock Engineer: THE PISTOL",
+			Music: []string{
+				"Halo 2 -- Halo Theme (Mjolnir Mix)",
+				"Halo 2 -- In Amber Clad",
+				"Halo 2 -- Mombasa Suite",
+				"Halo 2 -- The Last Spartan",
+			},
+		},
+		{
+			URL:   "https://www.youtube.com/watch?v=bUbUqsoI4OQ",
+			Title: "Stock Engineer: THE SHOTGUN",
+			Music: []string{
+				"Halo: CE -- Opening Suite",
+				"Halo: CE -- Truth and Reconciliation Suite",
+				"Halo: CE -- Perilous Journey",
+				"Halo: CE -- The Gun Pointed At The Head Of The Universe",
+				"Halo: CE -- Drumrun",
+				"Halo: CE -- A Walk In The Woods",
+				"Halo: CE -- Halo",
+				"La Caution -- Thé à la Menthe",
+				"Guitar Hero II -- Cheap Trick -- Surrender",
+				"Berserk -- Guts",
+			},
+		},
+		{
+			URL:   "https://www.youtube.com/watch?v=VdV7Yvwd-u0",
+			Title: "The Best Bad Map In TF2",
+			Music: []string{
+				"Halo 2 -- Peril",
+				"Super Mario 3D World -- Piranha Creeper Creek",
+				"Pokemon OR/AS -- Battle! Uxie/Mesprit/Azelf",
+				"Super Smash Bros Ultimate -- Yoshi’s Story 64",
+				"Bring Me The Horizon -- Can You Feel My Heart",
+			},
+		},
+		{
 			URL:   "https://www.youtube.com/watch?v=xlyCQCzgZeQ",
 			Title: "Makin' Bacon",
 			Music: []string{
