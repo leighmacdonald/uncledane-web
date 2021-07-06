@@ -129,19 +129,56 @@ func (a *App) handleIndex(c *gin.Context) {
 	a.render(c, "home", M{})
 }
 
+// [{"Code": "AF", "Name": "Africa"},{"Code": "NA", "Name": "North America"},{"Code": "OC", "Name": "Oceania"},{"Code": "AN", "Name": "Antarctica"},{"Code": "AS", "Name": "Asia"},{"Code": "EU", "Name": "Europe"},{"Code": "SA", "Name": "South America"}]
 func (a *App) handleServers(c *gin.Context) {
 	type serverInfo struct {
 		Region  string
-		Servers []*Server
+		Servers []Server
+	}
+
+	var serverCC = map[string][]Server{}
+	for _, sr := range servers {
+		cnt := strings.ToUpper(sr.Continent)
+		_, ok := serverCC[cnt]
+		if !ok {
+			serverCC[cnt] = nil
+		}
+		serverCC[cnt] = append(serverCC[cnt], *sr)
+	}
+	var s []serverInfo
+	cc := strings.ToUpper(c.GetHeader("CF-IPCountry"))
+	if cc == "" {
+		cc = "XX"
+	}
+	continent, found := countryMap[cc]
+	if found {
+		_, contMatch := serverCC[continent]
+		if contMatch {
+			var si serverInfo
+			for i, srv := range serverCC[continent] {
+				if i == 0 {
+					si.Region = srv.Region
+				}
+				si.Servers = append(si.Servers, srv)
+			}
+			s = append(s, si)
+			delete(serverCC, continent)
+		}
+	}
+	var remainingServers []Server
+	for _, country := range serverCC {
+		for _, server := range country {
+			remainingServers = append(remainingServers, server)
+		}
 	}
 	order := viper.GetStringSlice("order")
-	var s []serverInfo
+
 	for _, orderKey := range order {
 		var si serverInfo
 		si.Region = orderKey
-		for _, s := range servers {
-			if s.Region == orderKey {
-				si.Servers = append(si.Servers, s)
+		for _, sr := range remainingServers {
+			if sr.Continent == orderKey {
+				si.Servers = append(si.Servers, sr)
 			}
 		}
 		s = append(s, si)

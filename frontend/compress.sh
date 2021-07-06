@@ -35,3 +35,12 @@ for f in src/public/images/*.webm; do
 		cp -v "$f" dist/images/"${f##*/}"
 	fi
 done
+
+for f in src/public/images/*.webmanifest; do
+	if [[ -f dist/images/${f##*/} ]]; then
+		echo "Skipped ../dist/images/${f##*/}"
+	else
+		echo "Copying src/public/images/${f##*/} -> dist/images/${f##*/}"
+		cp -v "$f" dist/images/"${f##*/}"
+	fi
+done
