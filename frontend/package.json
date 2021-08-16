@@ -1,24 +1,12 @@
 {
-  "name": "uncledane-web",
-  "version": "1.0.0",
-  "description": "Frontend for uncledane.com",
-  "main": "src/index.ts",
-  "repository": "github.com/leighmacdonald/verimapcom",
   "author": "Leigh MacDonald",
-  "license": "MIT",
-  "private": true,
-  "homepage": "https://uncledane.com",
-  "scripts": {
-    "compress": "./compress.sh",
-    "serve": "cross-env NODE_ENV=development webpack serve",
-    "watch": "cross-env NODE_ENV=development webpack watch",
-    "build": "cross-env NODE_ENV=production webpack --mode production"
-  },
+  "description": "Frontend for uncledane.com",
   "devDependencies": {
     "@babel/core": "^7.15.0",
     "@babel/preset-env": "^7.15.0",
     "@babel/preset-react": "^7.14.5",
     "@material-ui/core": "^4.12.3",
+    "@material-ui/icons": "^4.11.2",
     "@types/jquery": "^3.5.6",
     "@types/react": "^17.0.17",
     "@types/react-dom": "^17.0.9",
@@ -32,6 +20,7 @@
     "mini-css-extract-plugin": "^2.2.0",
     "node-forge": "^0.10.0",
     "react": "^17.0.2",
+    "react-dom": "^17.0.2",
     "react-router-dom": "^5.2.0",
     "sass": "^1.37.5",
     "sass-loader": "^12.1.0",
@@ -39,15 +28,17 @@
     "ts-loader": "^9.2.5",
     "typescript": "^4.3.5",
     "webpack": "^5.50.0",
-    "webpack-cli": "^4.7.2",
-    "webpack-dev-server": "^3.11.2"
+    "webpack-cli": "^4.7.2"
   },
-  "dependencies": {
-    "@material-ui/icons": "^4.11.2",
-    "foundation-sites": "^6.6.3",
-    "jquery": "^3.6.0",
-    "motion-ui": "^2.0.3",
-    "react-dom": "^17.0.2",
-    "what-input": "^5.2.1"
-  }
+  "homepage": "https://uncledane.com",
+  "license": "MIT",
+  "main": "src/index.tsx",
+  "name": "uncledane-web",
+  "private": true,
+  "repository": "github.com/leighmacdonald/uncledane-web",
+  "scripts": {
+    "build": "cross-env NODE_ENV=production webpack --mode production",
+    "watch": "cross-env NODE_ENV=development webpack watch"
+  },
+  "version": "2.0.0"
 }

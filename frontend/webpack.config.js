@@ -12,11 +12,6 @@ module.exports = {
         clean: true,
     },
     devtool: 'inline-source-map',
-    devServer: {
-        port: 3000,
-        // contentBase: './dist',
-        watchContentBase: true
-    },
     resolve: {
         extensions: ['.tsx', '.ts', '.js']
     },
@@ -37,7 +32,6 @@ module.exports = {
                     //     : MiniCssExtractPlugin.loader,
                     // // Translates CSS into CommonJS
                     "css-loader",
-                    // Compiles Sass to CSS
                     {
                         loader: "sass-loader",
                     },
@@ -49,7 +43,6 @@ module.exports = {
                     loader: 'file-loader',
                     options: {
                         name: '[name].[ext]',
-                        //outputPath: 'static'
                     }
                 },
             },
@@ -59,7 +52,6 @@ module.exports = {
                     loader: 'file-loader',
                     options: {
                         name: '[name].[ext]',
-                        //outputPath: 'static'
                     }
                 },
             },
