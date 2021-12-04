@@ -39,7 +39,6 @@ function init_homepage() {
     });
     const elements = document.querySelectorAll(".home_grid video");
     for (let i = 0; i < elements.length; i++) {
-        console.log("adding listener")
         elements[i].addEventListener("mouseover", (e) => {
             const element = e.target as HTMLMediaElement;
             element.play();

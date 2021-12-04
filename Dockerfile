@@ -1,4 +1,4 @@
-FROM golang:1.14-alpine AS backend
+FROM golang:1.16-alpine AS backend
 RUN apk add make gcc
 WORKDIR /build
 COPY go.mod .
@@ -8,12 +8,14 @@ COPY . .
 RUN make
 
 FROM node:14-alpine AS ui
-RUN apk add build-base autoconf automake pngquant bash
+RUN apk add build-base autoconf automake pngquant bash python3
 WORKDIR /build
+COPY frontend/compress.sh .
 COPY frontend/yarn.lock .
 COPY frontend/package.json .
 RUN yarn install
 COPY frontend/. .
+RUN bash ./compress.sh
 RUN yarn run build
 
 FROM alpine:latest

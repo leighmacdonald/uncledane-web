@@ -25,6 +25,10 @@ js_deps: yarn_install
 build: clean fmt vet
 	@CGO_ENABLED=0 go build -o uncledane-web
 
+bump_deps:
+	go get -u ./...
+	cd frontend && yarn upgrade-interactive --latest
+
 run: build
 	@./uncledane-web
 
