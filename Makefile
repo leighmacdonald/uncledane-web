@@ -54,3 +54,5 @@ run_image: image
 image:
 	@docker build -t leighmacdonald/uncledane-web:latest .
 
+publish:
+	@docker push leighmacdonald/uncledane-web:latest

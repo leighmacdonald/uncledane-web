@@ -8,6 +8,35 @@ type creditMeta struct {
 
 var creds = []creditMeta{
 	{
+		URL:   "https://www.youtube.com/watch?v=rtXzUe-D02U",
+		Title: "Team Fortress 2 Funny Moments Part 75469127651294127628562",
+		Music: []string{
+			"Talus Battle -- The Legend of Zelda: Breath of the Wild",
+			"Yoshi’s Crafted World -- Fortress",
+			"Donkey Kong Country: Tropical Freeze -- Canopy Chaos",
+			"Undertale -- Snowdin Town",
+			"Rugrats Theme",
+			"Throat singing from Dune",
+		},
+	},
+	{
+		URL:   "https://www.youtube.com/watch?v=bFrS8xzxOQ4",
+		Title: "Engi-Where??",
+		Music: []string{
+			"Black Sheep -- The Choice Is Yours",
+			"The Surfrajettes -- Toxic",
+		},
+	},
+	{
+		URL:   "https://www.youtube.com/watch?v=nHDou7e8Epo",
+		Title: "Ten Years Of Team Fortress 2 -- Q&A",
+		Music: []string{
+			"8 Bit Universe -- Celebrate",
+			"Brother Bones & His Shadows -- Sweet Georgia Brown (Harlem Globetrotters Theme)",
+			"Wave Race 64 -- Sunset Bay",
+		},
+	},
+	{
 		URL:   "https://www.youtube.com/watch?v=-bmOs-MI8Qk",
 		Title: "Yeehaw",
 		Music: []string{
