@@ -69,7 +69,9 @@ func New() *App {
 	r.GET("/credits", a.handleCredits)
 	r.GET("/settings", a.handleSettings)
 	r.GET("/embed", a.handleOEmbed)
-
+	r.GET("/abc", func(c *gin.Context) {
+		c.Redirect(http.StatusFound, "https://uncle-dane.myshopify.com/")
+	})
 	a.router = r
 	return &a
 }
