@@ -8,6 +8,43 @@ type creditMeta struct {
 
 var creds = []creditMeta{
 	{
+		URL:   "https://www.youtube.com/watch?v=0jwT6MVn2LU",
+		Title: "New Year... New Uncle",
+		Music: []string{
+			"Umineko Chiru - Reflection",
+			"Tetrisphere -- Phony",
+			"Tetrisphere -- Prophetic",
+			"Tetrisphere -- T Grey",
+			"Plants VS Zombies -- Day Stage",
+			"Plants VS Zombies -- Fog Stage",
+			"Plants VS Zombies -- Nighttime In The Backyard (Horde)",
+			"Tekken 4 -- Uninhabited",
+			"Risk of Rain 2 -- Koppen As Fuck",
+			"Sonic Frontiers -- Heavenly Sky",
+			"Shadow the Hedgehog -- Gun Fortress",
+			"Melty Blood Actress Again -- Rhythmical Bustle",
+			"Metropolis Street Racer -- Club Paris",
+			"Halo 2 -- Peril",
+		},
+	},
+	{
+		URL:   "https://www.youtube.com/watch?v=BIM4tc6x3-g",
+		Title: "Valve Removed Hats",
+		Music: []string{
+			"Wave Race 64 -- Drake Lake",
+			"Wave Race 64 -- Glacier Coast",
+			"Wave Race 64 -- Ending",
+			"Sonic Frontiers -- Digital Cave",
+			"Silent Hill OST",
+			"Sheep Raider -- Track 3",
+			"Sheep Raider -- Track 9",
+			"Chain Dive -- Stage 1",
+			"Chain Dive -- Stage 4",
+			"Risk of Rain -- Moisture Deficit",
+			"Risk of Rain -- Dew Point",
+		},
+	},
+	{
 		URL:   "https://www.youtube.com/watch?v=r8aSQaQ6cVk",
 		Title: "Carrying My Team As Engineer",
 		Music: []string{
