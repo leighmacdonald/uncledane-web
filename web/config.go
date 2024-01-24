@@ -16,7 +16,7 @@ type Config struct {
 	StaticPath string `mapstructure:"static_path"`
 }
 
-// initConfig reads in config file and ENV variables if set.
+// InitConfig reads in config file and ENV variables if set.
 func InitConfig() {
 	if cfgFile != "" {
 		// Use config file from the flag.
