@@ -8,6 +8,21 @@ type creditMeta struct {
 
 var creds = []creditMeta{
 	{
+		URL:   "https://www.youtube.com/watch?v=cq-MZauZ_uM",
+		Title: "The Short Circuit Is Weird",
+		Music: []string{
+			"Jet Set Radio -- Everybody Jump Around",
+			"Jet Set Radio -- Moody’s Shuffle",
+			"Jet Set Radio -- Recipe For The Perfect Afro",
+			"Jet Set Radio -- Sneakman",
+			"Lethal League -- Flat Attack",
+			"Lethal League Blaze -- Dial Hop",
+			"Lethal League Blaze -- Shred",
+			"Afro Samurai -- Afro Fight (Groove 4)",
+			"Fire and Sword -- Under Earth",
+		},
+	},
+	{
 		URL:   "https://www.youtube.com/watch?v=0jwT6MVn2LU",
 		Title: "New Year... New Uncle",
 		Music: []string{
