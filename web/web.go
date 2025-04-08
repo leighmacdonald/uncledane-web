@@ -67,6 +67,7 @@ func New() *App {
 	r.GET("/", a.handleIndex)
 	r.GET("/donate", a.handleDonate)
 	r.GET("/credits", a.handleCredits)
+	r.GET("/2hot2handle", a.handle2hot2handle)
 	r.GET("/settings", a.handleSettings)
 	r.GET("/embed", a.handleOEmbed)
 	r.GET("/abc", func(c *gin.Context) {
@@ -142,6 +143,93 @@ func (a *App) handleOEmbed(c *gin.Context) {
 		"provider_name": "Check out my Uncletopia TF2 Servers",
 		"provider_url":  "https://uncletopia.com/servers",
 	})
+}
+
+type videoFile struct {
+	URL  string `json:"url"`
+	Type string `json:"type"`
+}
+
+type video struct {
+	Title string      `json:"title"`
+	Files []videoFile `json:"urls"`
+}
+
+func (a *App) handle2hot2handle(c *gin.Context) {
+	a.render(c, "videos", M{"videos": []video{
+		{
+			Title: "Impractical Engineering", Files: []videoFile{
+				{
+					URL:  "/dist/videos/webm/1_-_Impractical_Engineering.webm",
+					Type: "video/webm",
+				},
+				{
+					URL:  "/dist/videos/1_-_Impractical_Engineering.mp4",
+					Type: "video/mp4",
+				},
+			},
+		},
+		{
+			Title: "Texas Style", Files: []videoFile{
+				{
+					URL:  "/dist/videos/2_-_Texas_Style.mp4",
+					Type: "video/mp4",
+				},
+				{
+					URL:  "/dist/videos/webm/2_-_Texas_Style.webm",
+					Type: "video/webm",
+				},
+			},
+		},
+		{
+			Title: "Makin' Bacon", Files: []videoFile{
+				{
+					URL:  "/dist/videos/3_-_Makin_Bacon.mp4",
+					Type: "video/mp4",
+				},
+				{
+					URL:  "/dist/videos/webm/3_-_Makin_Bacon.webm",
+					Type: "video/webm",
+				},
+			},
+		},
+		{
+			Title: "Yeehaw", Files: []videoFile{
+				{
+					URL:  "/dist/videos/4_-_Yeehaw.mp4",
+					Type: "video/mp4",
+				},
+				{
+					URL:  "/dist/videos/webm/4_-_Yeehaw.webm",
+					Type: "video/webm",
+				},
+			},
+		},
+		{
+			Title: "Engi-where??", Files: []videoFile{
+				{
+					URL:  "/dist/videos/5_-_Engi-where.mp4",
+					Type: "video/mp4",
+				},
+				{
+					URL:  "/dist/videos/webm/5_-_Engi-where.webm",
+					Type: "video/webm",
+				},
+			},
+		},
+		{
+			Title: "God Bless The Engineer", Files: []videoFile{
+				{
+					URL:  "/dist/videos/6_-_God_Bless_The_Engineer.mp4",
+					Type: "video/mp4",
+				},
+				{
+					URL:  "/dist/videos/webm/6_-_God_Bless_The_Engineer.webm",
+					Type: "video/webm",
+				},
+			},
+		},
+	}})
 }
 
 func (a *App) handleCredits(c *gin.Context) {
