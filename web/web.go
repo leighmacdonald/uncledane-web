@@ -66,7 +66,7 @@ func New() *App {
 	r.GET("/", a.handleIndex)
 	r.GET("/donate", a.handleDonate)
 	r.GET("/credits", a.handleCredits)
-	r.GET("/2hot2handle", a.handle2hot2handle)
+	r.GET("/pubfragvideos", a.handle2hot2handle)
 	r.GET("/settings", a.handleSettings)
 	r.GET("/embed", a.handleOEmbed)
 	r.GET("/abc", func(c *gin.Context) {
