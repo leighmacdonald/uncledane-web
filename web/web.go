@@ -3,7 +3,6 @@ package web
 import (
 	"bytes"
 	"context"
-	"crypto/tls"
 	"fmt"
 	"github.com/gin-gonic/gin"
 	"github.com/gomarkdown/markdown"
@@ -160,19 +159,19 @@ func (a *App) handle2hot2handle(c *gin.Context) {
 		{
 			Title: "Impractical Engineering", Files: []videoFile{
 				{
-					URL:  "/dist/videos/webm/1_-_Impractical_Engineering.webm",
-					Type: "video/webm",
+					URL:  "/dist/videos/mp4/1_-_Impractical_Engineering.mp4",
+					Type: "video/mp4",
 				},
 				{
-					URL:  "/dist/videos/1_-_Impractical_Engineering.mp4",
-					Type: "video/mp4",
+					URL:  "/dist/videos/webm/1_-_Impractical_Engineering.webm",
+					Type: "video/webm",
 				},
 			},
 		},
 		{
 			Title: "Texas Style", Files: []videoFile{
 				{
-					URL:  "/dist/videos/2_-_Texas_Style.mp4",
+					URL:  "/dist/videos/mp4/2_-_Texas_Style.mp4",
 					Type: "video/mp4",
 				},
 				{
@@ -184,7 +183,7 @@ func (a *App) handle2hot2handle(c *gin.Context) {
 		{
 			Title: "Makin' Bacon", Files: []videoFile{
 				{
-					URL:  "/dist/videos/3_-_Makin_Bacon.mp4",
+					URL:  "/dist/videos/mp4/3_-_Makin_Bacon.mp4",
 					Type: "video/mp4",
 				},
 				{
@@ -196,7 +195,7 @@ func (a *App) handle2hot2handle(c *gin.Context) {
 		{
 			Title: "Yeehaw", Files: []videoFile{
 				{
-					URL:  "/dist/videos/4_-_Yeehaw.mp4",
+					URL:  "/dist/videos/mp4/4_-_Yeehaw.mp4",
 					Type: "video/mp4",
 				},
 				{
@@ -208,7 +207,7 @@ func (a *App) handle2hot2handle(c *gin.Context) {
 		{
 			Title: "Engi-where??", Files: []videoFile{
 				{
-					URL:  "/dist/videos/5_-_Engi-where.mp4",
+					URL:  "/dist/videos/mp4/5_-_Engi-where.mp4",
 					Type: "video/mp4",
 				},
 				{
@@ -220,7 +219,7 @@ func (a *App) handle2hot2handle(c *gin.Context) {
 		{
 			Title: "God Bless The Engineer", Files: []videoFile{
 				{
-					URL:  "/dist/videos/6_-_God_Bless_The_Engineer.mp4",
+					URL:  "/dist/videos/mp4/6_-_God_Bless_The_Engineer.mp4",
 					Type: "video/mp4",
 				},
 				{
@@ -240,27 +239,23 @@ func (a *App) handleSettings(c *gin.Context) {
 	a.render(c, "settings", M{})
 }
 
-// HTTPOpts is used to configure a http.Server instance
+// HTTPOpts is used to configure an http.Server instance
 type HTTPOpts struct {
 	ListenAddr     string
-	UseTLS         bool
 	Handler        http.Handler
 	ReadTimeout    time.Duration
 	WriteTimeout   time.Duration
 	MaxHeaderBytes int
-	TLSConfig      *tls.Config
 }
 
 // DefaultHTTPOpts returns a default set of options for http.Server instances
 func DefaultHTTPOpts() HTTPOpts {
 	return HTTPOpts{
 		ListenAddr:     config.Listen,
-		UseTLS:         false,
 		Handler:        nil,
 		ReadTimeout:    10 * time.Second,
 		WriteTimeout:   10 * time.Second,
 		MaxHeaderBytes: 1 << 20,
-		TLSConfig:      nil,
 	}
 }
 
@@ -268,26 +263,9 @@ func DefaultHTTPOpts() HTTPOpts {
 // This should be used over the default ListenAndServe options as they do not set certain
 // parameters, notably timeouts, which can negatively effect performance.
 func NewHTTPServer(opts HTTPOpts) *http.Server {
-	var tlsCfg *tls.Config
-	if opts.UseTLS && opts.TLSConfig == nil {
-		tlsCfg = &tls.Config{
-			MinVersion:               tls.VersionTLS12,
-			CurvePreferences:         []tls.CurveID{tls.CurveP521, tls.CurveP384, tls.CurveP256},
-			PreferServerCipherSuites: true,
-			CipherSuites: []uint16{
-				tls.TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384,
-				tls.TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA,
-				tls.TLS_RSA_WITH_AES_256_GCM_SHA384,
-				tls.TLS_RSA_WITH_AES_256_CBC_SHA,
-			},
-		}
-	} else {
-		tlsCfg = nil
-	}
 	return &http.Server{
 		Addr:           opts.ListenAddr,
 		Handler:        opts.Handler,
-		TLSConfig:      tlsCfg,
 		ReadTimeout:    opts.ReadTimeout,
 		WriteTimeout:   opts.WriteTimeout,
 		MaxHeaderBytes: opts.MaxHeaderBytes,

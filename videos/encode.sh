@@ -6,7 +6,7 @@
 
 for filename in *.mp4; do
     # WebM
-    # ffmpeg -i "$filename" -c:v libvpx -crf 10 -b:v 12M -c:a libvorbis webm/`basename $filename .mp4`.webm
+    ffmpeg -i "$filename" -c:v libvpx -crf 10 -b:v 12M -c:a libvorbis webm/`basename $filename .mp4`.webm
 
     # mp4
     ffmpeg -i "$filename" -vcodec libx264 -f mp4 -vb 8M -preset slow mp4/$filename
