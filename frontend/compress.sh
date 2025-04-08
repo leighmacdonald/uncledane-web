@@ -1,5 +1,5 @@
 #!/bin/bash
-mkdir -p dist/images dist/dl
+mkdir -p dist/images/thumb dist/dl
 for f in src/public/dl/*.zip; do
 	if [[ -f dist/dl/${f##*/} ]]; then
 		echo "Skipped ../dist/dl/${f##*/}"
@@ -33,5 +33,14 @@ for f in src/public/images/*.webm; do
 	else
 		echo "Copying src/public/images/${f##*/} -> dist/images/${f##*/}"
 		cp -v "$f" dist/images/"${f##*/}"
+	fi
+done
+
+for f in src/public/images/thumb/*.png; do
+	if [[ -f dist/images/thumb/${f##*/} ]]; then
+		echo "Skipped ../dist/images/thumb/${f##*/}"
+	else
+		echo "Copying src/public/images/thumb/${f##*/} -> dist/images/thumb/${f##*/}"
+		cp -v "$f" dist/images/thumb/"${f##*/}"
 	fi
 done

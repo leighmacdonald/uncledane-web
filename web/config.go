@@ -8,12 +8,19 @@ import (
 	"os"
 )
 
+type creditMeta struct {
+	URL   string
+	Title string
+	Music []string
+}
+
 var config Config
 var cfgFile string
 
 type Config struct {
-	Listen     string `mapstructure:"listen_http"`
-	StaticPath string `mapstructure:"static_path"`
+	Listen     string       `mapstructure:"listen_http"`
+	StaticPath string       `mapstructure:"static_path"`
+	Credits    []creditMeta `mapstructure:"credits"`
 }
 
 // InitConfig reads in config file and ENV variables if set.

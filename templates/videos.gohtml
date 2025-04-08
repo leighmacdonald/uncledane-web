@@ -9,7 +9,7 @@
         <div class="grid-x grid-margin-x grid-margin-y">
             <div class="cell">
                 <h1 class="text-center header_h1">Video Archive</h1>
-                <p style="text-align: center">A collection of videos that have been, or are likely to be taken down from YouTube for using copy writen music.</p>
+                <p style="text-align: center">A collection of videos that have been, or are likely to be taken down from YouTube for using copyrighted music.</p>
             </div>
             <div class="grid-x grid-margin-x grid-margin-y">
             {{ range $i, $v := .videos }}
@@ -23,7 +23,7 @@
                             width="720"
                             controls
                             preload="none"
-{{/*                            poster="//vjs.zencdn.net/v/oceans.png"*/}}
+                            poster="{{ $v.Thumb }}"
                             data-setup='{}'>
                         {{ range $v.Files }}
                             <source src="{{ .URL }}" type="{{ .Type }}" />

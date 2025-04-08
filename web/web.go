@@ -151,13 +151,14 @@ type videoFile struct {
 
 type video struct {
 	Title string      `json:"title"`
+	Thumb string      `json:"thumb"`
 	Files []videoFile `json:"urls"`
 }
 
 func (a *App) handle2hot2handle(c *gin.Context) {
 	a.render(c, "videos", M{"videos": []video{
 		{
-			Title: "Impractical Engineering", Files: []videoFile{
+			Title: "Impractical Engineering", Thumb: "/dist/images/thumb/1_-_Impractical_Engineering.png", Files: []videoFile{
 				{
 					URL:  "/dist/videos/mp4/1_-_Impractical_Engineering.mp4",
 					Type: "video/mp4",
@@ -169,7 +170,7 @@ func (a *App) handle2hot2handle(c *gin.Context) {
 			},
 		},
 		{
-			Title: "Texas Style", Files: []videoFile{
+			Title: "Texas Style", Thumb: "/dist/images/thumb/2_-_Texas_Style.png", Files: []videoFile{
 				{
 					URL:  "/dist/videos/mp4/2_-_Texas_Style.mp4",
 					Type: "video/mp4",
@@ -181,7 +182,7 @@ func (a *App) handle2hot2handle(c *gin.Context) {
 			},
 		},
 		{
-			Title: "Makin' Bacon", Files: []videoFile{
+			Title: "Makin' Bacon", Thumb: "/dist/images/thumb/3_-_Makin_Bacon.png", Files: []videoFile{
 				{
 					URL:  "/dist/videos/mp4/3_-_Makin_Bacon.mp4",
 					Type: "video/mp4",
@@ -193,7 +194,7 @@ func (a *App) handle2hot2handle(c *gin.Context) {
 			},
 		},
 		{
-			Title: "Yeehaw", Files: []videoFile{
+			Title: "Yeehaw", Thumb: "/dist/images/thumb/4_-_Yeehaw.png", Files: []videoFile{
 				{
 					URL:  "/dist/videos/mp4/4_-_Yeehaw.mp4",
 					Type: "video/mp4",
@@ -205,7 +206,7 @@ func (a *App) handle2hot2handle(c *gin.Context) {
 			},
 		},
 		{
-			Title: "Engi-where??", Files: []videoFile{
+			Title: "Engi-where??", Thumb: "/dist/images/thumb/5_-_Engi-where.png", Files: []videoFile{
 				{
 					URL:  "/dist/videos/mp4/5_-_Engi-where.mp4",
 					Type: "video/mp4",
@@ -217,7 +218,7 @@ func (a *App) handle2hot2handle(c *gin.Context) {
 			},
 		},
 		{
-			Title: "God Bless The Engineer", Files: []videoFile{
+			Title: "God Bless The Engineer", Thumb: "/dist/images/thumb/6_-_God_Bless_The_Engineer.png", Files: []videoFile{
 				{
 					URL:  "/dist/videos/mp4/6_-_God_Bless_The_Engineer.mp4",
 					Type: "video/mp4",
@@ -232,7 +233,7 @@ func (a *App) handle2hot2handle(c *gin.Context) {
 }
 
 func (a *App) handleCredits(c *gin.Context) {
-	a.render(c, "credits", M{"credits": creds})
+	a.render(c, "credits", M{"credits": config.Credits})
 }
 
 func (a *App) handleSettings(c *gin.Context) {
