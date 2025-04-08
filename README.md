@@ -25,6 +25,9 @@ Run the HTTP application server:
 The docker image uses a 3 stage build system. 2 Build stages, one for frontend (JS/CSS/etc.) and the other for
 the go backend. The compiled binaries and assets are then copied to the final image. 
 
+The videos folder (not included in this repo), should be mounted in the container under /app/frontend/dist/videos
+
+
 To build the image `leighmacdonald/uncledane-web` run:
 
     make image
@@ -35,4 +38,4 @@ To run the image:
     
 Or
 
-    docker run --rm -p 8003:8003 -v "$(pwd)/config.yaml:/app/config.yaml" leighmacdonald/uncledane-web:latest
+    docker run --rm -p 8003:8003 -v "$(pwd)/config.yaml:/app/config.yaml" -v "$(pwd)/videos:/app/frontend/dist/videos" leighmacdonald/uncledane-web:latest

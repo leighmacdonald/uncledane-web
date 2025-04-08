@@ -1,2 +1,0 @@
-listen_http: ":8003"
-static_path: "frontend/dist"

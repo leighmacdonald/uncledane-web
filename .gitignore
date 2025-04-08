@@ -19,3 +19,5 @@
 /frontend/dist/
 /uncledane-web
 /frontend/node_modules/
+*.zip
+*.rar

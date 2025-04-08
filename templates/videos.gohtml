@@ -1,0 +1,50 @@
+{{define "content"}}
+    <style>
+        .video-container {
+            width: 100%;
+        }
+    </style>
+    <link href=" https://cdn.jsdelivr.net/npm/video.js@8.22.0/dist/video-js.min.css " rel="stylesheet">
+    <div class="grid-container" style="padding-bottom: 40px">
+        <div class="grid-x grid-margin-x grid-margin-y">
+            <div class="cell">
+                <h1 class="text-center header_h1">Video Archive</h1>
+                <p style="text-align: center">A collection of videos that have been, or are likely to be taken down from YouTube for using copyrighted music.</p>
+            </div>
+            <div class="grid-x grid-margin-x grid-margin-y">
+            {{ range $i, $v := .videos }}
+                <div class="cell video-container">
+                    <h3 style="text-align: center">{{ $v.Title }}</h3>
+                    <div  style="max-width: fit-content; margin-inline: auto;">
+                    <video
+
+                            id="player-{{ $i }}"
+                            class="video-js"
+                            width="720"
+                            controls
+                            preload="none"
+                            poster="{{ $v.Thumb }}"
+                            data-setup='{}'>
+                        {{ range $v.Files }}
+                            <source src="{{ .URL }}" type="{{ .Type }}" />
+                        {{end}}
+
+                        <p class="vjs-no-js">
+                            To view this video please enable JavaScript, and consider upgrading to a
+                            web browser that
+                            <a href="https://videojs.com/html5-video-support/" target="_blank">
+                                supports HTML5 video
+                            </a>
+                        </p>
+                    </video>
+                    </div>
+                </div>
+            {{ end }}
+            </div>
+        </div>
+    </div>
+
+    <script src=" https://cdn.jsdelivr.net/npm/video.js@8.22.0/dist/video.min.js "></script>
+{{end}}
+
+{{define "title"}}Videos{{end}}

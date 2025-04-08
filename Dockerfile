@@ -1,4 +1,4 @@
-FROM golang:1.19-alpine AS backend
+FROM golang:1.24-alpine AS backend
 RUN apk add make gcc
 WORKDIR /build
 COPY go.mod .
@@ -7,7 +7,7 @@ RUN go mod download
 COPY . .
 RUN make
 
-FROM node:16-alpine AS ui
+FROM node:20-alpine AS ui
 RUN apk add build-base autoconf automake pngquant bash python3
 WORKDIR /build
 COPY frontend/compress.sh .
