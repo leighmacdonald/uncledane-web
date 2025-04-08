@@ -8,10 +8,21 @@ import (
 	"os"
 )
 
+type videoFile struct {
+	URL  string `json:"url" mapstructure:"url"`
+	Type string `json:"type" mapstructure:"type"`
+}
+
+type video struct {
+	Title string      `json:"title" mapstructure:"title"`
+	Thumb string      `json:"thumb" mapstructure:"thumb"`
+	Files []videoFile `json:"files" mapstructure:"files"`
+}
+
 type creditMeta struct {
-	URL   string
-	Title string
-	Music []string
+	URL   string   `mapstructure:"url"`
+	Title string   `mapstructure:"title"`
+	Music []string `mapstructure:"music"`
 }
 
 var config Config
@@ -21,6 +32,7 @@ type Config struct {
 	Listen     string       `mapstructure:"listen_http"`
 	StaticPath string       `mapstructure:"static_path"`
 	Credits    []creditMeta `mapstructure:"credits"`
+	Videos     []video      `mapstructure:"videos"`
 }
 
 // InitConfig reads in config file and ENV variables if set.

@@ -1,5 +1,53 @@
 listen_http: ":8003"
 static_path: "frontend/dist"
+videos:
+  - title: "Impractical Engineering"
+    thumb: "/dist/images/thumb/1_-_Impractical_Engineering.png"
+    files:
+      - url: "/dist/videos/mp4/1_-_Impractical_Engineering.mp4"
+        type: "video/mp4"
+      - url: "/dist/videos/webm/1_-_Impractical_Engineering.webm"
+        type: "video/webm"
+
+  - title: "Texas Style"
+    thumb: "/dist/images/thumb/2_-_Texas_Style.png"
+    files:
+      - url: "/dist/videos/mp4/2_-_Texas_Style.mp4"
+        type: "video/mp4"
+      - url: "/dist/videos/webm/2_-_Texas_Style.webm"
+        type: "video/webm"
+
+  - title: "Makin' Bacon"
+    thumb: "/dist/images/thumb/3_-_Makin_Bacon.png"
+    files:
+      - url: "/dist/videos/mp4/3_-_Makin_Bacon.mp4"
+        type: "video/mp4"
+      - url: "/dist/videos/webm/3_-_Makin_Bacon.webm"
+        type: "video/webm"
+
+  - title: "Yeehaw"
+    thumb: "/dist/images/thumb/4_-_Yeehaw.png"
+    files:
+      - url: "/dist/videos/mp4/4_-_Yeehaw.mp4"
+        type: "video/mp4"
+      - url: "/dist/videos/webm/4_-_Yeehaw.webm"
+        type: "video/webm"
+
+  - title: "Engi-where??"
+    thumb: "/dist/images/thumb/5_-_Engi-where.png"
+    files:
+      - url: "/dist/videos/mp4/5_-_Engi-where.mp4"
+        type: "video/mp4"
+      - url: "/dist/videos/webm/5_-_Engi-where.webm"
+        type: "video/webm"
+
+  - title: "God Bless The Engineer"
+    thumb: "/dist/images/thumb/6_-_God_Bless_The_Engineer.png"
+    files:
+      - url: "/dist/videos/mp4/6_-_God_Bless_The_Engineer.mp4"
+        type: "video/mp4"
+      - url: "/dist/videos/webm/6_-_God_Bless_The_Engineer.webm"
+        type: "video/webm"
 
 credits:
   - url: "https://www.youtube.com/watch?v=x8ufAQm2GZM"
