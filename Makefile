@@ -49,7 +49,7 @@ clean:
 	@rm -rf ./frontend/dist
 
 run_image: image
-	@docker run --rm -p 8003:8003 -v "$(pwd)/config.yaml:/app/config.yaml" ghcr.io/leighmacdonald/uncledane-web:latest
+	@docker run --rm -p 8003:8003 -v "./config.yaml:/app/config.yaml" -v "./videos:/app/frontend/dist/videos" ghcr.io/leighmacdonald/uncledane-web:latest
 
 image:
 	@docker build . --tag ghcr.io/leighmacdonald/uncledane-web:latest
