@@ -38,4 +38,4 @@ To run the image:
     
 Or
 
-    docker run --rm -p 8003:8003 -v "$(pwd)/config.yaml:/app/config.yaml" -v "$(pwd)/videos:/app/frontend/dist/videos" leighmacdonald/uncledane-web:latest
+    docker run --rm -p 8003:8003 -v "./config.yaml:/app/config.yaml" -v "./videos:/app/frontend/dist/videos" leighmacdonald/uncledane-web:latest
